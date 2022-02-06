@@ -14,18 +14,28 @@
                     <!-- form start -->
                     <form action="{{route('employee.tour-program-save')}}" method="POST">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Date of tour</label>
                                 <input type="text" name="date_of_tour" class="form-control" placeholder="Date of tour">
+                                @error('date_of_tour')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Place</label>
-                                <input type="email" name="place" class="form-control" placeholder="place">
+                                <input type="text" name="place" class="form-control" placeholder="place">
+                                @error('place')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Working with</label>
                                 <input type="text" name="working_with" class="form-control" placeholder="Working with">
+                                @error('working_with')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- /.card-body -->

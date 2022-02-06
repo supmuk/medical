@@ -40,8 +40,6 @@ class EmployeeController extends Controller
      * Save Daily Call Report
      */
     public function dailyCallReportSave(DailyCallReportRequest $request) {
-        $request->request->remove('_token');
-        $request->request->add(['user_id'=> Auth::id()]);
         $this->dailyCallReport->create($request->all());
         return view('backend.employee.daily-call-report');
     }
@@ -57,8 +55,6 @@ class EmployeeController extends Controller
      * Save tour Program
      */
     function tourProgramSave(TourProgramRequest $request) {
-        $request->request->remove('_token');
-        $request->request->add(['user_id'=> Auth::id()]);
         $this->tourProgram->create($request->all());
     }
 
@@ -73,8 +69,6 @@ class EmployeeController extends Controller
      * Save standard fare chart manager
      */
     function standardFareChartSave(StandardFareChart $request) {
-        $request->request->remove('_token');
-        $request->request->add(['user_id'=> Auth::id()]);
         $this->standardFareChart->create($request->all());
         return view('backend.employee.standard-fare-chart');
     }

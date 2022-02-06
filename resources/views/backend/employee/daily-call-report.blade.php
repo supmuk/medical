@@ -15,6 +15,7 @@
       
                     <form action="{{route('employee.daily-call-report-save')}}" method="POST">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Headquarter Name</label>
