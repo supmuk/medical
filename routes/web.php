@@ -50,8 +50,9 @@ Route::middleware('auth')->group(function () {
                 // Route::get('edit/{id}', 'edit')->name('edit');
                 // Route::post('save', 'save')->name('save');
                 Route::get('daily-call-report', 'dailyCallReport')->name('daily-call-report');
+
                 Route::get('tour-program', 'tourProgram')->name('tour-program');
-                Route::get('tour-program-save', 'tourProgramSave')->name('tour-program-save');
+                Route::post('tour-program-save', 'tourProgramSave')->name('tour-program-save');
                 
                 Route::get('standard-fare-chart', 'standardFareChart')->name('standard-fare-chart');
                 Route::post('standard-fare-chart-save', 'standardFareChartSave')->name('standard-fare-chart-save');

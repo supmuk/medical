@@ -5,14 +5,18 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StandardFareChart;
+use App\Http\Requests\TourProgramRequest;
 use App\Models\StandardFareChart as StandardFareChartModel;
+use App\Models\TourProgram;
 use Auth;
 
 class EmployeeController extends Controller
 {
     private $standardFareChart;
+    private $tourProgram;
     public function __construct() {
         $this->standardFareChart = new StandardFareChartModel;
+        $this->tourProgram = new TourProgram;
     }
     /**
      * Return All Employee
@@ -38,8 +42,10 @@ class EmployeeController extends Controller
     /**
      * Save tour Program
      */
-    function tourProgramSave() {
-        
+    function tourProgramSave(TourProgramRequest $request) {
+        $request->request->remove('_token');
+        $request->request->add(['user_id'=> Auth::id()]);
+        $this->tourProgram->create($request->all());
     }
 
     /**

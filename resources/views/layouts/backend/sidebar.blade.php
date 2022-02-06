@@ -131,9 +131,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('employee.daily-call-report')}}" class="nav-link">
+                <a href="{{route('employee.tour-program')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Daily Call Report</p>
+                  <p>Tour Program</p>
                 </a>
               </li>
               <li class="nav-item">

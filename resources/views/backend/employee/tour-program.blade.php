@@ -16,40 +16,16 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Tour</label>
+                                <label>Date of tour</label>
                                 <input type="text" name="date_of_tour" class="form-control" placeholder="Date of tour">
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter name">
+                                <label>Place</label>
+                                <input type="email" name="place" class="form-control" placeholder="place">
                             </div>
                             <div class="form-group">
-                                <label>Mobile Number</label>
-                                <input type="number" name="mob" class="form-control" placeholder="Mobile Number">
-                            </div>
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" name="address" class="form-control" placeholder="Address">
-                            </div>
-                            <div class="form-group">
-                                <label>Qualification</label>
-                                <input type="text" name="qualification" class="form-control" placeholder="Qualification">
-                            </div>
-                            <div class="form-group">
-                                <label>Date of birth</label>
-                                <div class="input-group date">
-                                    <input type="date" name="dob" class="form-control datetimepicker-input">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Anniversary Date</label>
-                                <div class="input-group date">
-                                    <input type="date" name="anniversary_date" class="form-control datetimepicker-input">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Speciality</label>
-                                <input type="text" name="speciality" class="form-control" placeholder="Speciality">
+                                <label>Working with</label>
+                                <input type="text" name="working_with" class="form-control" placeholder="Working with">
                             </div>
                         </div>
                         <!-- /.card-body -->
