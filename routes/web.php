@@ -21,14 +21,25 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('doctor')->group(function () {
-    Route::name('doctor.')->group(function () {
-        Route::controller('Backend\DoctorController')->group(function () {
-            Route::get('index', 'index')->name('index');
-            Route::get('add', 'create')->name('add');
-            Route::get('edit/{id}', 'edit')->name('edit');
-            Route::post('save', 'save')->name('save');
+Route::middleware('auth')->group(function () {
+    Route::prefix('doctor')->group(function () {
+        Route::name('doctor.')->group(function () {
+            Route::controller('Backend\DoctorController')->group(function () {
+                Route::get('index', 'index')->name('index');
+                Route::get('add', 'create')->name('add');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('save', 'save')->name('save');
+            });
+        });
+    });
+    Route::prefix('chemist')->group(function () {
+        Route::name('chemist.')->group(function () {
+            Route::controller('Backend\ChemistController')->group(function () {
+                Route::get('index', 'index')->name('index');
+                Route::get('add', 'create')->name('add');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('save', 'save')->name('save');
+            });
         });
     });
 });
-Route::get('add-chemist', 'Backend\ChemistController@index')->name('chemist.add');

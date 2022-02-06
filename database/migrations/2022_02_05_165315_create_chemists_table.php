@@ -18,10 +18,10 @@ class CreateChemistsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('mob');
-            $table->string('address');
-            $table->string('owner_name');
-            $table->json('product')->default(new Expression('(JSON_ARRAY())'));
+            $table->string('mob')->nullable();
+            $table->string('address')->nullable();
+            $table->string('owner_name')->nullable();
+            $table->string('product')->nullable();
             $table->timestamps();
         });
     }

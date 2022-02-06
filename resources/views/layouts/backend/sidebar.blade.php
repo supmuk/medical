@@ -73,7 +73,7 @@
             </a>
           </li> --}}
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="javascript:void(0);" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Doctor
@@ -95,12 +95,26 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{route('chemist.add')}}" class="nav-link">
+            <a href="javascript:void(0);" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Add Chemist
+                Chemist
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('chemist.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Chemist List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('chemist.add')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Chemist</p>
+                </a>
+              </li>
+            </ul>
           </li>
           {{-- <li class="nav-item">
             <a href="#" class="nav-link">
