@@ -12,44 +12,58 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{route('doctor.save')}}" method="POST">
+      
+                    <form action="{{route('employee.daily-call-report-save')}}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter name">
+                                <label>Headquarter Name</label>
+                                <input type="text" name="headquarter_name" class="form-control" placeholder="Headquarter Name">
+                                @error('headquarter_name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter name">
+                                <label>Place of working</label>
+                                <input type="text" name="place_of_working" class="form-control" placeholder="Place of working">
+                                @error('place_of_working')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label>Mobile Number</label>
-                                <input type="number" name="mob" class="form-control" placeholder="Mobile Number">
+                                <label>Working with</label>
+                                <input type="text" name="working_with" class="form-control" placeholder="Working with">
+                                @error('working_with')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" name="address" class="form-control" placeholder="Address">
+                                <label>Visited Doctor Name</label>
+                                <input type="text" name="visited_doctor_name" class="form-control" placeholder="Visited Doctor Name">
+                                @error('visited_doctor_name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label>Qualification</label>
-                                <input type="text" name="qualification" class="form-control" placeholder="Qualification">
+                                <label>Visited Chemist Name</label>
+                                <input type="text" name="visited_chemist_name" class="form-control" placeholder="Visited Chemist Name">
+                                @error('visited_chemist_name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label>Date of birth</label>
-                                <div class="input-group date">
-                                    <input type="date" name="dob" class="form-control datetimepicker-input">
-                                </div>
+                                <label>Personel Order Booking</label>
+                                <input type="text" name="pob" class="form-control" placeholder="Personel Order Booking">
+                                @error('pob')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label>Anniversary Date</label>
-                                <div class="input-group date">
-                                    <input type="date" name="anniversary_date" class="form-control datetimepicker-input">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Speciality</label>
-                                <input type="text" name="speciality" class="form-control" placeholder="Speciality">
+                                <label>Stockist Visited</label>
+                                <input type="text" name="stockist_visited" class="form-control" placeholder="Stockist Visited">
+                                @error('stockist_visited')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- /.card-body -->

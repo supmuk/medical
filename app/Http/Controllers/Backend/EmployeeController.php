@@ -6,17 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StandardFareChart;
 use App\Http\Requests\TourProgramRequest;
+use App\Http\Requests\DailyCallReportRequest;
 use App\Models\StandardFareChart as StandardFareChartModel;
 use App\Models\TourProgram;
+use App\Models\DailyCallReport;
 use Auth;
 
 class EmployeeController extends Controller
 {
     private $standardFareChart;
     private $tourProgram;
+    private $dailyCallReport;
     public function __construct() {
         $this->standardFareChart = new StandardFareChartModel;
         $this->tourProgram = new TourProgram;
+        $this->dailyCallReport = new DailyCallReport;
     }
     /**
      * Return All Employee
@@ -29,6 +33,16 @@ class EmployeeController extends Controller
      * Daily Call Report
      */
     public function dailyCallReport() {
+        return view('backend.employee.daily-call-report');
+    }
+
+    /**
+     * Save Daily Call Report
+     */
+    public function dailyCallReportSave(DailyCallReportRequest $request) {
+        $request->request->remove('_token');
+        $request->request->add(['user_id'=> Auth::id()]);
+        $this->dailyCallReport->create($request->all());
         return view('backend.employee.daily-call-report');
     }
 
