@@ -13,17 +13,20 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form action="{{route('headquarter.save')}}" method="POST">
+                        @if(!empty($headquarter))
+                            <input type="hidden" name="id" value="{{$headquarter->id}}">
+                        @endif
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter name" value="{{printOldOrDbValue('name', $headquarter)}}">
+                                <input type="text" name="name" class="form-control" placeholder="Enter name" value="{{printOldOrDbValue('name', $headquarter ?? '')}}">
                                 @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="">
-                                <input type="checkbox" name="is_active" {{printOldOrDbValue('is_active', $headquarter) ? 'checked="checked"' : ''}} >
+                                <input type="checkbox" name="is_active" {{printOldOrDbValue('is_active', $headquarter ?? '') ? 'checked="checked"' : ''}} >
                                 <label> Is Active </label>
                             </div>
                         </div>

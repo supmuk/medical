@@ -15,7 +15,7 @@ class HeadquarterController extends Controller
         $this->headquarter = new Headquarter;
     }
     public function index() {
-        $headquarters = $this->headquarter->orderBy('id', 'desc')->paginate(1);
+        $headquarters = $this->headquarter->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.headquarter.index')->with(['headquarters'=>$headquarters]);
     }
 
@@ -34,7 +34,6 @@ class HeadquarterController extends Controller
     }
 
     public function save(HeadquarterRequest $request) {
-        
         // Create
         $data = [];
         if( $request->has('is_active') ) {
@@ -42,9 +41,11 @@ class HeadquarterController extends Controller
         }
         $data['name'] = $request->name;
         
-        $this->headquarter->create($data);
+        $this->headquarter->updateOrCreate([
+            'id' => $request->id
+        ],$data);
 
-        Session::flash('message', 'success|Headquarter Added !');
+        Session::flash('message', 'success|Headquarter Added Or Update Successfully !');
         return redirect()->route('headquarter.index');
     }
 
