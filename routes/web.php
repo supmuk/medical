@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
                 Route::get('tour-program', 'tourProgram')->name('tour-program');
                 Route::post('tour-program-save', 'tourProgramSave')->name('tour-program-save');
                 
+                Route::get('standard-fare-chart-index', 'standardFareChartIndex')->name('standard-fare-chart-index');
+                Route::get('standard-fare-chart-edit/{id}', 'standardFareChartEdit')->name('standard-fare-chart-edit');
                 Route::get('standard-fare-chart', 'standardFareChart')->name('standard-fare-chart');
                 Route::post('standard-fare-chart-save', 'standardFareChartSave')->name('standard-fare-chart-save');
             });

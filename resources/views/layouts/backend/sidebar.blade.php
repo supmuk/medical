@@ -77,9 +77,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('employee.standard-fare-chart')}}" class="nav-link">
+                            <a href="{{route('employee.standard-fare-chart-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Standard fare chart</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('employee.standard-fare-chart')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Standard fare chart</p>
                             </a>
                         </li>
                     </ul>

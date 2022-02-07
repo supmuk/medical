@@ -11,6 +11,7 @@ use App\Models\StandardFareChart as StandardFareChartModel;
 use App\Models\TourProgram;
 use App\Models\DailyCallReport;
 use Auth;
+use Session;
 
 class EmployeeController extends Controller
 {
@@ -59,17 +60,38 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Standard fare chart manager
+     * Standard fare chart manager list
      */
-    function standardFareChart() {
-        return view('backend.employee.standard-fare-chart');
+    public function standardFareChartIndex() {
+        $standardFareCharts = $this->standardFareChart->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        return view('backend.employee.standard-fare-chart-index')->with(['standardFareCharts'=>$standardFareCharts]);
     }
 
     /**
-     * Save standard fare chart manager
+     * Standard fare chart manager form
+     */
+    function standardFareChart() {
+        return view('backend.employee.standard-fare-chart')->with(['standardFare' => '']);
+    }
+
+    /**
+     * Standard fare chart manager edit form
+     */
+    function standardFareChartEdit($id) {
+        $standardFare = $this->standardFareChart->find($id);
+        if(! $standardFare) {
+            Session::flash('message', 'danger|Standard Fare Chart not found !');
+            return redirect()->route('employee.standard-fare-chart-index');
+        } 
+        return view('backend.employee.standard-fare-chart')->with(['standardFare' => $standardFare]);
+    }
+
+    /**
+     * Save standard fare chart manager save and update
      */
     function standardFareChartSave(StandardFareChart $request) {
-        $this->standardFareChart->create($request->all());
-        return view('backend.employee.standard-fare-chart');
+        $this->standardFareChart->updateOrCreate(['id'=>$request->id],$request->all());
+        Session::flash('message', 'success|Standard Fare Chart Added Or Update Successfully !');
+        return redirect()->route('employee.standard-fare-chart-index');
     }
 }
