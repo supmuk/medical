@@ -58,4 +58,15 @@ Route::middleware('auth')->group(function () {
             });
         });
     });
+
+    Route::prefix('headquarter')->group(function () {
+        Route::name('headquarter.')->group(function () {
+            Route::controller('Backend\HeadquarterController')->group(function () {
+                Route::get('index', 'index')->name('index');
+                Route::get('create', 'create')->name('create');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('save', 'save')->name('save');
+            }); 
+        });
+    });   
 });

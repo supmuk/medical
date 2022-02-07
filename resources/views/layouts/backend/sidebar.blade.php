@@ -84,6 +84,28 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Headquarter
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('headquarter.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Headquarter List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('headquarter.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Headquarter</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

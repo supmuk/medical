@@ -14,3 +14,28 @@ if(!function_exists('displayAlert')) {
         return '';
     }
 }
+
+if( !function_exists('printOldOrDbValue') ) {
+    function printOldOrDbValue($key, $data=null) {
+        
+        $value = '';
+
+        if( !empty($key) ) {
+            if( !empty(old($key)) ) {
+                // Return Old Value
+                $value = old($key);
+            }
+            elseif( !empty($data) ) {
+                // Return Value from db
+                if( is_object($data) ) {
+                    $value = $data->$key;
+                }
+                elseif( is_array($data) ) {
+                    $value = $data[$key];
+                }
+            }
+            return $value;
+        }
+        return $value;
+    }
+}
