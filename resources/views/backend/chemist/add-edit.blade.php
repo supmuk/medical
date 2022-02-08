@@ -14,30 +14,51 @@
                     <!-- form start -->
                     <form action="{{route('chemist.save')}}" method="POST">
                         @csrf
+                        @if(!empty($chemist))
+                            <input type="hidden" name="id" value="{{$chemist->id}}">
+                        @endif
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter name">
+                                <input type="text" name="name" class="form-control" placeholder="Enter name" value="{{printOldOrDbValue('name', $chemist)}}">
+                                @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control" placeholder="Enter name">
+                                <input type="email" name="email" class="form-control" placeholder="Enter name" value="{{printOldOrDbValue('email', $chemist)}}">
+                                @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Mobile Number</label>
-                                <input type="number" name="mob" class="form-control" placeholder="Mobile Number">
+                                <input type="number" name="mob" class="form-control" placeholder="Mobile Number" value="{{printOldOrDbValue('mob', $chemist)}}">
+                                @error('mob')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
-                                <input type="text" name="address" class="form-control" placeholder="Address">
+                                <input type="text" name="address" class="form-control" placeholder="Address" value="{{printOldOrDbValue('address', $chemist)}}">
+                                @error('address')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Owner Name</label>
-                                <input type="text" name="owner_name" class="form-control" placeholder="Owner Name">
+                                <input type="text" name="owner_name" class="form-control" placeholder="Owner Name" value="{{printOldOrDbValue('owner_name', $chemist)}}">
+                                @error('owner_name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Product</label>
-                                <input type="text" name="product" class="form-control" placeholder="Product">
+                                <input type="text" name="product" class="form-control" placeholder="Product" value="{{printOldOrDbValue('product', $chemist)}}">
+                                @error('product')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <!-- /.card-body -->

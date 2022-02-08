@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Doctor List</h1>
+                <h1>Chemist List</h1>
             </div>
             <div class="col-sm-6">
                 <a href="{{route('chemist.add')}}" class="float-sm-right btn btn-primary"> Add New </a>
@@ -41,7 +41,7 @@
                                     <td>{{$value->mob ?? '-'}}</td>
                                     <td>{{$value->owner_name ?? '-'}}</td>
                                     <td>
-                                        <a href="{{route('doctor.edit', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('chemist.edit', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>
                                 @empty

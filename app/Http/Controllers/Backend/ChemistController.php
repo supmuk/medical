@@ -19,23 +19,22 @@ class ChemistController extends Controller
     }
 
     public function create() {
-        return view('backend.chemist.add-edit');
+        return view('backend.chemist.add-edit')->with(['chemist'=>'']);
     }
 
     public function edit($id) {
-        // $doctor = $this->doctor->find($id);
-        // if(! $doctor) {
-        //     Session::flash('message', 'danger|Doctor not found !');
-        //     return redirect()->route('doctor.index');
-        // } 
+        $chemist = $this->chemist->find($id);
+        if(! $chemist) {
+            Session::flash('message', 'danger|Chemist not found !');
+            return redirect()->route('doctor.index');
+        } 
         
-        // return view('backend.doctor.add-edit');
+        return view('backend.chemist.add-edit')->with(['chemist'=>$chemist]);
     }
 
     public function save(ChemistRequest $request) {
-        // dd($request->all());
-        $this->chemist->create($request->all());
-        Session::flash('message', 'success|Chemist Added !');
+        $this->chemist->updateOrCreate(['id'=>$request->id], $request->all());
+        Session::flash('message', 'success|Chemist Added or Updated Successfully !');
         return redirect()->route('chemist.index');
     }
 

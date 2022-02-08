@@ -25,7 +25,7 @@ class ChemistRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:chemists,email,'.$this->id,
             'mob' => 'required',
             'address' => 'required',
             'owner_name' => 'required',
