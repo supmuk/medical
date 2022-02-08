@@ -25,7 +25,7 @@ class DoctorRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:doctors,email,'.$this->id,
             'mob' => 'required',
             'address' => 'required',
             'qualification' => 'required',

@@ -14,12 +14,12 @@ class DoctorController extends Controller
         $this->doctor = new Doctor;
     }
     public function index() {
-        $doctors = $this->doctor->paginate(1);
+        $doctors = $this->doctor->paginate(PAGINATION_SIZE);
         return view('backend.doctor.index')->with(['doctors'=>$doctors]);
     }
 
     public function create() {
-        return view('backend.doctor.add-edit');
+        return view('backend.doctor.add-edit')->with(['doctor'=>'']);
     }
 
     public function edit($id) {
@@ -29,12 +29,12 @@ class DoctorController extends Controller
             return redirect()->route('doctor.index');
         } 
         
-        return view('backend.doctor.add-edit');
+        return view('backend.doctor.add-edit')->with(['doctor'=>$doctor]);
     }
 
     public function save(DoctorRequest $request) {
-        $this->doctor->create($request->all());
-        Session::flash('message', 'success|Doctor Added !');
+        $this->doctor->updateOrCreate(['id'=>$request->id], $request->all());
+        Session::flash('message', 'success|Doctor Added or Update Successfully !');
         return redirect()->route('doctor.index');
     }
 
