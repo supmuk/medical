@@ -112,6 +112,28 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Product
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('product.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Product List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('product.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Product</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
