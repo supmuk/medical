@@ -14,6 +14,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/css/adminlte.min.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -39,6 +41,8 @@
 <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap -->
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
 <script src="{{asset('assets/plugins/daterangepicker/daterangepicker.min.js')}}"></script>
 <!-- jQuery UI -->
 <script src="{{asset('assets/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
@@ -51,7 +55,26 @@
 <script src="{{asset('assets/js/demo.js')}}"></script>
 <!-- Page specific script -->
 <script>
-  
+$(document).ready(function() {
+  $('.select2').select2({
+    placeholder: 'Keyword...',
+    multiple: true,
+    ajax: {
+        type: 'GET',
+        url: "{{route('product.list-of-product')}}",
+        processResults: function(data) {
+            return {
+                results: $.map(data, function(item) {
+                    return {
+                        text: item.name,
+                        id: item.id
+                    }
+                })
+            };
+        }
+    }
+});
+			});
 </script>
 @stack('scripts')
 </body>

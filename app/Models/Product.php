@@ -7,4 +7,8 @@ class Product extends Model {
     protected $table = 'products';
     protected $guarded = [];
 
+    public function scopeWhereLike($query, $column, $value)
+    {
+        return $query->where($column, 'like', '%'.$value.'%');
+    }
 }

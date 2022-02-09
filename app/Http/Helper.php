@@ -39,3 +39,12 @@ if( !function_exists('printOldOrDbValue') ) {
         return $value;
     }
 }
+
+if( !function_exists('fetchingSingleValue') ) {
+    function fetchingSingleValue($tableName, $columnName, $colVal, $fetchCol) {
+        $data = \DB::table($tableName)->where($columnName, $colVal)->select($fetchCol)->first();
+        if(empty($data)) 
+            return '';
+        return $data->$fetchCol;
+    }
+}

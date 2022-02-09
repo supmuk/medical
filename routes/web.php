@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('create', 'create')->name('create');
                 Route::get('edit/{id}', 'edit')->name('edit');
                 Route::post('save', 'save')->name('save');
+                Route::any('save', 'listOfProduct')->name('list-of-product');
             }); 
         });
     });

@@ -14,7 +14,7 @@ class ChemistController extends Controller
         $this->chemist = new Chemist;
     }
     public function index() {
-        $chemists = $this->chemist->paginate(1);
+        $chemists = $this->chemist->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.chemist.index')->with(['chemists'=>$chemists]);
     }
 
@@ -33,7 +33,11 @@ class ChemistController extends Controller
     }
 
     public function save(ChemistRequest $request) {
-        $this->chemist->updateOrCreate(['id'=>$request->id], $request->all());
+        $data = [];
+        $product = implode(',', $request->product);
+        $data = $request->except('product');
+        $data['product'] = $product;
+        $this->chemist->updateOrCreate(['id'=>$request->id], $data);
         Session::flash('message', 'success|Chemist Added or Updated Successfully !');
         return redirect()->route('chemist.index');
     }

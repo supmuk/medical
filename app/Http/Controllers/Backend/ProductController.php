@@ -42,4 +42,16 @@ class ProductController extends Controller
     public function delete() {
 
     }
+
+    /**
+     * @return json
+     */
+    public function listOfProduct(Request $request) {
+        $products = $this->product->query();
+        if(!empty($request->term)) {
+            $products = $products->whereLike('name', $request->term);
+        }
+        $products = $products->select('id', 'name')->get();
+        return response()->json($products);
+    }
 }

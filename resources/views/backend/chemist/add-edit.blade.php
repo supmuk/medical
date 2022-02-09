@@ -55,7 +55,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Product</label>
-                                <input type="text" name="product" class="form-control" placeholder="Product" value="{{printOldOrDbValue('product', $chemist)}}">
+                                {{-- <input type="text" name="product[]" id="autoCompleteSelect2" placeholder="Product" value="{{printOldOrDbValue('product', $chemist)}}" multiple="multiple" /> --}}
+                                <select class="form-control select2" name="product[]" multiple="multiple" value="{{printOldOrDbValue('product', $chemist)}}">
+                                    @foreach(explode(',',$chemist->product) as $key => $val)
+                                        <option value="{{$val}}" selected> {{fetchingSingleValue('products', 'id', $val, 'name')}} </option>
+                                    @endforeach
+                                </select>
                                 @error('product')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
