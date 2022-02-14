@@ -6,9 +6,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::any('about', 'IndexController@about')->name('about');
+Route::any('contact', 'IndexController@contact')->name('contact');
+Route::any('products', 'IndexController@products')->name('products');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Only Authenticated User Can Access Below Routes
 
 Route::middleware('auth')->group(function () {
     Route::prefix('doctor')->group(function () {
