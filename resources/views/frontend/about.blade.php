@@ -7,7 +7,6 @@
         <div class="col-lg-6 col-md-12">
           <h1 class="title mb-0">About <span>Us</span></h1>
         </div>
-        
       </div>
     </div>
 </section>

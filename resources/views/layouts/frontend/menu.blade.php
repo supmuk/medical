@@ -39,7 +39,7 @@
           <div class="col">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg">
-              <a class="navbar-brand logo" href="index.html">
+              <a class="navbar-brand logo" href="{{route('index')}}">
                 <img id="logo-img" class="img-fluid" src="images/logo.png" alt="">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -47,12 +47,12 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <!-- Left nav -->
                 <ul class="nav navbar-nav mx-auto">
-                  <li class="nav-item dropdown"> <a class="nav-link active" href="{{route('home')}}">Home</a></li>
-                  <li class="nav-item dropdown"> <a class="nav-link" href="{{route('about')}}">About</a></li>
-                  <li class="nav-item dropdown"> <a class="nav-link" href="{{route('contact')}}">Contact</a></li>
-                  <li class="nav-item dropdown"> <a class="nav-link" href="{{route('products')}}">Products</a></li>
-                  <li class="nav-item dropdown"> <a class="nav-link" href="{{route('login')}}">Login</a></li>
-                  <li class="nav-item dropdown"> <a class="nav-link" href="{{route('register')}}">Register</a></li>
+                  <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('index') ? 'active' : '' }}" href="{{route('index')}}">Home</a></li>
+                  <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('about') ? 'active' : '' }}" href="{{route('about')}}">About</a></li>
+                  <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('contact') ? 'active' : '' }}" href="{{route('contact')}}">Contact</a></li>
+                  <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('products') ? 'active' : '' }}" href="{{route('products')}}">Products</a></li>
+                  <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('login') ? 'active' : '' }}" href="{{route('login')}}">Login</a></li>
+                  <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('register') ? 'active' : '' }}" href="{{route('register')}}">Register</a></li>
                 </ul>
               </div>
             </nav>

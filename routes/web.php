@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::any('/', 'IndexController@home')->name('home');
+Route::any('/', 'IndexController@home')->name('index');
 Route::any('about', 'IndexController@about')->name('about');
 Route::any('contact', 'IndexController@contact')->name('contact');
 Route::any('products', 'IndexController@products')->name('products');
