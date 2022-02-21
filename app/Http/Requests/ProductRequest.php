@@ -26,6 +26,7 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
+            'file' => 'required'
         ];
     }
 }

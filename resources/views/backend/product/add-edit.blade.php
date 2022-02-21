@@ -12,7 +12,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{route('product.save')}}" method="POST">
+                    <form action="{{route('product.save')}}" method="POST" enctype="multipart/form-data">
                         @if(!empty($product))
                             <input type="hidden" name="id" value="{{$product->id}}">
                         @endif
@@ -31,6 +31,17 @@
                                 @error('description')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <input type="file" name="file" required>
+                                @error('file')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+
+                                @if(!empty($product && $product->file_path))
+                                    <img src="{{asset('storage/product/'.$product->file_path)}}" alt="" height="120px" width="120px" class="img-responsive"/>
+                                @endif
                             </div>
                         </div>
                         <!-- /.card-body -->

@@ -15,13 +15,13 @@ class ProductController extends Controller
         $this->product = new Product;
     }
     public function index(Request $request) {
-        $headquarter = $this->product->query();
+        $product = $this->product->query();
 
         if(!empty($request->name)) {
             $product->orWhere('name', 'like', '%'.$request->name.'%');
         }
         $products = $product->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
-        return view('backend.product.index')->with(['products'=>$products]);
+        return view('backend.product.index')->with(['products'=>$products, 'request'=>$request->all()]);
     }
 
     public function create() {
@@ -39,7 +39,19 @@ class ProductController extends Controller
     }
 
     public function save(ProductRequest $request) {
-        $this->product->updateOrCreate(['id'=>$request->id], $request->all());
+        if ($request->hasFile('file')) {
+            $request->file->store('product', 'public');
+        }
+
+        $request->request->add(['file_path'=>$request->file->hashName()]);
+
+        $data = [
+            'name' => $request->name,
+            'description' => $request->description,
+            'file_path' => $request->file->hashName(),
+        ];
+
+        $this->product->updateOrCreate(['id'=>$request->id], $data);
         Session::flash('message', 'success|Product Added or Update Successfully !');
         return redirect()->route('product.index');
     }
