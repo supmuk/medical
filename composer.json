@@ -28,7 +28,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/http/helper.php",
+            "app/Http/Helper.php",
             "config/constant.php"
         ]
     },

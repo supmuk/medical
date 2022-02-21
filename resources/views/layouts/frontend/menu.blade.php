@@ -40,7 +40,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg">
               <a class="navbar-brand logo" href="{{route('index')}}">
-                <img id="logo-img" class="img-fluid" src="images/logo.png" alt="">
+                <img id="logo-img" class="img-fluid" src="{{asset('assets/images/logo.jpeg')}}" alt="">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
               </button>

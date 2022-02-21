@@ -2,9 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+});
+
 Route::any('/', 'IndexController@home')->name('index');
 Route::any('about', 'IndexController@about')->name('about');
 Route::any('contact', 'IndexController@contact')->name('contact');
