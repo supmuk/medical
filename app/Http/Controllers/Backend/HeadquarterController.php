@@ -14,12 +14,18 @@ class HeadquarterController extends Controller
     public function __construct() {
         $this->headquarter = new Headquarter;
     }
-    public function index() {
-        $headquarters = $this->headquarter->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
-        return view('backend.headquarter.index')->with(['headquarters'=>$headquarters]);
+    public function index(Request $request) {
+        $headquarter = $this->headquarter->query();
+
+        if(!empty($request->name)) {
+            $headquarter->orWhere('name', 'like', '%'.$request->name.'%');
+        }
+        $headquarters = $headquarter->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        return view('backend.headquarter.index')->with(['headquarters'=>$headquarters, 'request'=>$request->all()]);
     }
 
-    public function create() {
+    public function create(Request $request) {
+
         return view('backend.headquarter.add-edit');
     }
 

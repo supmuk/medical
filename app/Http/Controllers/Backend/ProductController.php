@@ -14,8 +14,13 @@ class ProductController extends Controller
     public function __construct() {
         $this->product = new Product;
     }
-    public function index() {
-        $products = $this->product->paginate(PAGINATION_SIZE);
+    public function index(Request $request) {
+        $headquarter = $this->product->query();
+
+        if(!empty($request->name)) {
+            $product->orWhere('name', 'like', '%'.$request->name.'%');
+        }
+        $products = $product->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.product.index')->with(['products'=>$products]);
     }
 

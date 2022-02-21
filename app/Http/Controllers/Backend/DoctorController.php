@@ -13,9 +13,22 @@ class DoctorController extends Controller
     public function __construct() {
         $this->doctor = new Doctor;
     }
-    public function index() {
-        $doctors = $this->doctor->paginate(PAGINATION_SIZE);
-        return view('backend.doctor.index')->with(['doctors'=>$doctors]);
+    public function index(Request $request) {
+
+        $doctor = $this->doctor->query();
+
+        if(!empty($request->name)) {
+            $doctor->orWhere('name', 'like', '%'.$request->name.'%');
+        }
+        if(!empty($request->email)) {
+            $doctor->orWhere('email', 'like', '%'.$request->email.'%');
+        }
+        if(!empty($request->mob)) {
+            $doctor->orWhere('mob', 'like', '%'.$request->mob.'%');
+        }
+        
+        $doctors = $doctor->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        return view('backend.doctor.index')->with(['doctors'=>$doctors, 'request'=>$request->all()]);
     }
 
     public function create() {

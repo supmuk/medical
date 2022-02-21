@@ -13,9 +13,22 @@ class ChemistController extends Controller
     public function __construct() {
         $this->chemist = new Chemist;
     }
-    public function index() {
-        $chemists = $this->chemist->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
-        return view('backend.chemist.index')->with(['chemists'=>$chemists]);
+    public function index(Request $request) {
+
+        $chemist = $this->chemist->query();
+
+        if(!empty($request->name)) {
+            $chemist->orWhere('name', 'like', '%'.$request->name.'%');
+        }
+        if(!empty($request->email)) {
+            $chemist->orWhere('email', 'like', '%'.$request->email.'%');
+        }
+        if(!empty($request->mob)) {
+            $chemist->orWhere('mob', 'like', '%'.$request->mob.'%');
+        }
+        
+        $chemists = $chemist->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        return view('backend.chemist.index')->with(['chemists'=>$chemists, 'request'=>$request->all()]);
     }
 
     public function create() {

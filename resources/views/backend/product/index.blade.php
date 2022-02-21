@@ -15,6 +15,18 @@
 </section>
 <section class="content">
     <div class="container-fluid">
+        <form action="{{route('product.index')}}" method="get" class="m-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{{$request['name'] ?? ''}}" />
+                </div>
+                <div class="col-md-3 mt-4 pt-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <a href="{{route('product.index')}}" class="btn btn-primary">Reset</a>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-12">
                 <div class="card">
