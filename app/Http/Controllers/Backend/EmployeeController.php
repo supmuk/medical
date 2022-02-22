@@ -87,6 +87,15 @@ class EmployeeController extends Controller
     }
 
     /**
+     * show all daily report
+     */
+    public function dailyCallReportIndex(Request $request) {
+        $dailyCallReport = $this->dailyCallReport->query();
+        $dailyCallReport = $dailyCallReport->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        return view('backend.employee.daily-call-report-index')->with(['dailyCallReports'=>$dailyCallReport]);
+    }
+
+    /**
      * Daily Call Report
      */
     public function dailyCallReport() {
@@ -102,6 +111,15 @@ class EmployeeController extends Controller
     }
 
     /**
+     * 
+     */
+    public function tourProgramIndex(Request $request) {
+        $tourProgram = $this->tourProgram->query();
+        $tourProgram = $tourProgram->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        return view('backend.employee.tour-program-index')->with(['tourProgram'=>$tourProgram]);
+    }
+
+    /**
      * Tour Program
      */
     function tourProgram() {
@@ -113,6 +131,8 @@ class EmployeeController extends Controller
      */
     function tourProgramSave(TourProgramRequest $request) {
         $this->tourProgram->create($request->all());
+        Session::flash('message', 'success|Tour Program Added or Update Successfully !');
+        return redirect()->route('employee.tour-program-index');
     }
 
     /**

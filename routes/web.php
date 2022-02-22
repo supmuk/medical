@@ -47,9 +47,11 @@ Route::middleware('auth')->group(function () {
                 Route::get('edit/{id}', 'edit')->name('edit');
                 Route::post('save', 'save')->name('save');
 
+                Route::get('daily-call-report-index', 'dailyCallReportIndex')->name('daily-call-report-index');
                 Route::get('daily-call-report', 'dailyCallReport')->name('daily-call-report');
                 Route::post('daily-call-report-save', 'dailyCallReportSave')->name('daily-call-report-save');
 
+                Route::get('tour-program-index', 'tourProgramIndex')->name('tour-program-index');
                 Route::get('tour-program', 'tourProgram')->name('tour-program');
                 Route::post('tour-program-save', 'tourProgramSave')->name('tour-program-save');
                 

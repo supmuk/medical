@@ -70,11 +70,22 @@
                                 <p>Employee List</p>
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="{{route('employee.daily-call-report-index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daily Call Report List</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{route('employee.daily-call-report')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Daily Call Report</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('employee.tour-program-index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tour Program List</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -86,7 +97,7 @@
                         <li class="nav-item">
                             <a href="{{route('employee.standard-fare-chart-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Standard fare chart</p>
+                                <p>Standard fare chart List</p>
                             </a>
                         </li>
                         <li class="nav-item">
