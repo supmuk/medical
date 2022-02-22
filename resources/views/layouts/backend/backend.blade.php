@@ -74,6 +74,24 @@ $(document).ready(function() {
         }
     }
 });
+$('.headquarter-select2').select2({
+            placeholder: 'Keyword...',
+            // multiple: true,
+            ajax: {
+                type: 'GET',
+                url: "{{route('list-of-headquarter')}}",
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+            }
+        });
 			});
 </script>
 @stack('scripts')

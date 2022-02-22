@@ -82,7 +82,7 @@ class EmployeeController extends Controller
         $updateArr['headquarter_name'] = $request->headquarter_name;
 
         User::where('id', $request->id)->update($updateArr);
-        Session::flash('message', 'success|Standard Fare Chart Added Or Update Successfully !');
+        Session::flash('message', 'Employee Updated Successfully !');
         return redirect()->route('employee.index');
     }
 

@@ -58,4 +58,16 @@ class HeadquarterController extends Controller
     public function delete() {
 
     }
+
+    /**
+     * List of headquarter
+     */
+    public function listOfHeadquarter(Request $request) {
+        $products = $this->headquarter->query();
+        if(!empty($request->term)) {
+            $products = $products->whereLike('name', $request->term);
+        }
+        $products = $products->select('id', 'name')->get();
+        return response()->json($products);
+    }
 }

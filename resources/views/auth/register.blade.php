@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" novalidate>
                         @csrf
 
                         <div class="row mb-3">
@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <input id="phone_no" type="number" class="form-control @error('phone_no') is-invalid @enderror" name="phone_no" value="{{ old('phone_no') }}" required>
 
-                                @error('number')
+                                @error('phone_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -84,9 +84,10 @@
                         <div class="row mb-3">
                             <label for="headquarter_name" class="col-md-4 col-form-label text-md-end">{{ __('Headquarter Name') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="headquarter_name" type="text" class="form-control @error('headquarter_name') is-invalid @enderror" name="headquarter_name" value="{{ old('headquarter_name') }}" required>
-
+                            <div class="col-md-6">                                
+                                <select class="form-control headquarter-select2" name="headquarter_name">
+                                    
+                                </select>
                                 @error('headquarter_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

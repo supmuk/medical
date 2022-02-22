@@ -27,6 +27,8 @@
 <link href="{{asset('assets/frontend/css/responsive.css')}}" rel="stylesheet" type="text/css" />
 <link href="#" data-style="styles" rel="stylesheet">
 <link href="{{asset('assets/frontend/css/color-customize/color-customizer.css')}}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 </head>
 
 <body>
@@ -57,5 +59,28 @@
 <script src="{{asset('assets/frontend/js/color-customize/color-customizer.js')}}"></script> 
 <script src="{{asset('assets/frontend/js/wow.min.js')}}"></script>
 <script src="{{asset('assets/frontend/js/theme-script.js')}}"></script>
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+<script>
+    $(document).ready(function() {
+        $('.headquarter-select2').select2({
+            placeholder: 'Keyword...',
+            // multiple: true,
+            ajax: {
+                type: 'GET',
+                url: "{{route('list-of-headquarter')}}",
+                processResults: function(data) {
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                }
+            }
+        });
+	});
+</script>
 </body>
 </html>

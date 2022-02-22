@@ -84,3 +84,5 @@ Route::middleware('auth')->group(function () {
         });
     });
 });
+
+Route::any('headquarter', 'Backend\HeadquarterController@listOfHeadquarter')->name('list-of-headquarter');

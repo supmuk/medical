@@ -85,13 +85,22 @@
                             <label for="headquarter_name" class="col-md-4 col-form-label text-md-end">{{ __('Headquarter Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="headquarter_name" type="text" class="form-control @error('headquarter_name') is-invalid @enderror" name="headquarter_name" value="{{printOldOrDbValue('headquarter_name', $user)}}" >
+                                {{-- <input id="headquarter_name" type="text" class="form-control @error('headquarter_name') is-invalid @enderror" name="headquarter_name" value="{{printOldOrDbValue('headquarter_name', $user)}}" > --}}
+                                <select class="form-control headquarter-select2" name="headquarter_name">
+                                    
+                                    @if(!empty($user) && !empty($user->headquarter_name))
+                                        @foreach(explode(',',$user->headquarter_name) as $key => $val)
+                                            <option value="{{$val}}" selected> {{fetchingSingleValue('headquarter', 'id', $val, 'name')}} </option>
+                                        @endforeach
+                                    @endif
+                                </select>
 
                                 @error('headquarter_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                
                             </div>
                         </div>
 
@@ -152,29 +161,6 @@
                                 <input id="active" type="checkbox" name="active" {{ ($user->is_active) ? "checked" : '' }}>
                             </div>
                         </div>
-
-                        {{-- <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> --}}
-
-                        {{-- <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
-                            </div>
-                        </div> --}}
-
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
