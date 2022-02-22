@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StandardFareChart;
 use App\Http\Requests\TourProgramRequest;
 use App\Http\Requests\DailyCallReportRequest;
+use App\Http\Requests\EmployeeRequest;
 use App\Models\StandardFareChart as StandardFareChartModel;
 use App\Models\TourProgram;
 use App\Models\DailyCallReport;
@@ -30,8 +31,15 @@ class EmployeeController extends Controller
      * Return All Employee
      */
     public function index(Request $request) {
-        $users = $this->user->paginate(10);
-        return view('backend.employee.index', ['users' => $users]);
+        $user = $this->user->query();
+        if(!empty($request->name)) {
+            $user->orWhere('name', 'like', '%'.$request->name.'%');
+        }
+        if(!empty($request->email)) {
+            $user->orWhere('email', 'like', '%'.$request->email.'%');
+        }
+        $users = $user->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        return view('backend.employee.index', ['users' => $users, 'request'=>$request->all()]);
     }
 
     /**
@@ -45,9 +53,9 @@ class EmployeeController extends Controller
     /**
      * Save user details
      */
-    public function save(Request $request) {
+    public function save(EmployeeRequest $request) {
         $updateArr = [];
-
+        
         if ($request->hasFile('aadhar_card')) {
             $request->aadhar_card->store('user/addhar', 'public');
             $updateArr['aadhar_card'] = $request->aadhar_card->hashName();
@@ -59,6 +67,11 @@ class EmployeeController extends Controller
         if ($request->hasFile('driving_voter_card')) {
             $request->driving_voter_card->store('user/driving_voter_card', 'public');
             $updateArr['driving_voter_card'] = $request->driving_voter_card->hashName();
+        }
+        if($request->active == 'on') {
+            $updateArr['is_active'] = 1;
+        } else {
+            $updateArr['is_active'] = 0;
         }
 
         $updateArr['name'] = $request->name;
