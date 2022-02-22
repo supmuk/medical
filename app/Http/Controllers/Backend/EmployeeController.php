@@ -12,22 +12,65 @@ use App\Models\TourProgram;
 use App\Models\DailyCallReport;
 use Auth;
 use Session;
+use App\Models\User;
 
 class EmployeeController extends Controller
 {
     private $standardFareChart;
     private $tourProgram;
     private $dailyCallReport;
+    private $user;
     public function __construct() {
         $this->standardFareChart = new StandardFareChartModel;
         $this->tourProgram = new TourProgram;
         $this->dailyCallReport = new DailyCallReport;
+        $this->user = new User;
     }
     /**
      * Return All Employee
      */
-    public function index() {
+    public function index(Request $request) {
+        $users = $this->user->paginate(10);
+        return view('backend.employee.index', ['users' => $users]);
+    }
 
+    /**
+     * Edit employee details
+     */
+    public function edit($id) {
+        $user = $this->user->findOrFail($id);
+        return view('backend.employee.edit', ['user' => $user]);        
+    }
+
+    /**
+     * Save user details
+     */
+    public function save(Request $request) {
+        $updateArr = [];
+
+        if ($request->hasFile('aadhar_card')) {
+            $request->aadhar_card->store('user/addhar', 'public');
+            $updateArr['aadhar_card'] = $request->aadhar_card->hashName();
+        }
+        if ($request->hasFile('pan_card')) {
+            $request->pan_card->store('user/pan', 'public');
+            $updateArr['pan_card'] = $request->pan_card->hashName();
+        }
+        if ($request->hasFile('driving_voter_card')) {
+            $request->driving_voter_card->store('user/driving_voter_card', 'public');
+            $updateArr['driving_voter_card'] = $request->driving_voter_card->hashName();
+        }
+
+        $updateArr['name'] = $request->name;
+        $updateArr['email'] = $request->email;
+        $updateArr['phone_no'] = $request->phone_no;
+        $updateArr['address'] = $request->address;
+        $updateArr['designation'] = $request->designation;
+        $updateArr['headquarter_name'] = $request->headquarter_name;
+
+        User::where('id', $request->id)->update($updateArr);
+        Session::flash('message', 'success|Standard Fare Chart Added Or Update Successfully !');
+        return redirect()->route('employee.index');
     }
 
     /**

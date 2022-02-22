@@ -43,7 +43,7 @@ class ProductController extends Controller
             $request->file->store('product', 'public');
         }
 
-        $request->request->add(['file_path'=>$request->file->hashName()]);
+        // $request->request->add(['file_path'=>$request->file->hashName()]);
 
         $data = [
             'name' => $request->name,

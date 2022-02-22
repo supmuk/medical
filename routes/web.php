@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function () {
         Route::name('employee.')->group(function () {
             Route::controller('Backend\EmployeeController')->group(function () {
                 Route::get('index', 'index')->name('index');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('save', 'save')->name('save');
 
                 Route::get('daily-call-report', 'dailyCallReport')->name('daily-call-report');
                 Route::post('daily-call-report-save', 'dailyCallReportSave')->name('daily-call-report-save');

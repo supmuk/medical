@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -72,11 +72,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
+        $request = request();
+        if ($request->hasFile('aadhar_card')) {
+            $request->aadhar_card->store('user/addhar', 'public');
+        }
+        if ($request->hasFile('pan_card')) {
+            $request->pan_card->store('user/pan', 'public');
+        }
+        if ($request->hasFile('driving_voter_card')) {
+            $request->driving_voter_card->store('user/driving_voter_card', 'public');
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone_no' => $request->phone_no,
+            'address' => $request->address,
+            'designation' => $request->designation,
+            'headquarter_name' => $request->headquarter_name,
+            'aadhar_card' => $request->aadhar_card->hashName(),
+            'pan_card' => $request->pan_card->hashName(),
+            'driving_voter_card'=>$request->driving_voter_card->hashName(),
         ]);
     }
 }
