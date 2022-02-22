@@ -57,9 +57,11 @@
                                 <label>Product</label>
                                 {{-- <input type="text" name="product[]" id="autoCompleteSelect2" placeholder="Product" value="{{printOldOrDbValue('product', $chemist)}}" multiple="multiple" /> --}}
                                 <select class="form-control select2" name="product[]" multiple="multiple" value="{{printOldOrDbValue('product', $chemist)}}">
+                                    @if(!empty($chemist) && !empty($chemist->product))
                                     @foreach(explode(',',$chemist->product) as $key => $val)
                                         <option value="{{$val}}" selected> {{fetchingSingleValue('products', 'id', $val, 'name')}} </option>
                                     @endforeach
+                                    @endif
                                 </select>
                                 @error('product')
                                     <div class="text-danger">{{ $message }}</div>

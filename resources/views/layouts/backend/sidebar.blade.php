@@ -12,7 +12,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-                <li class="nav-item">
+                <li class="nav-item @if(\Request::is('doctor/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -34,7 +34,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if(\Request::is('chemist/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -56,7 +56,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if(\Request::is('employee/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -90,7 +90,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if(\Request::is('headquarter/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
@@ -112,7 +112,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item @if(\Request::is('product/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
