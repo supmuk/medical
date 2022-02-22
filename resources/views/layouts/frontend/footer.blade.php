@@ -94,16 +94,7 @@
         </div>
       </div>
     </div>
-    <div class="secondary-footer text-center">
-      <div class="container">
-        <div class="copyright">
-          <div class="row">
-            <div class="col"> <span>Copyright 2018 Hectolab Theme by <a target="_blank" href="www.themeht.html"> ThemeHt </a> | All Rights Reserved</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
   </footer>
   
   <!--footer end-->
