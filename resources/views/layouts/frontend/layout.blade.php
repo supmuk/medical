@@ -24,6 +24,7 @@
 <link href="{{asset('assets/frontend/css/base.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/frontend/css/shortcodes.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/frontend/css/style.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets/frontend/css/theme-color/theme-blue.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('assets/frontend/css/responsive.css')}}" rel="stylesheet" type="text/css" />
 <link href="#" data-style="styles" rel="stylesheet">
 <link href="{{asset('assets/frontend/css/color-customize/color-customizer.css')}}" rel="stylesheet" type="text/css" />
