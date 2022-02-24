@@ -58,4 +58,13 @@ class ChemistController extends Controller
     public function delete() {
 
     }
+
+    public function chemistList(Request $request) {
+        $chemists = $this->chemist->query();
+        if(!empty($request->term)) {
+            $chemists = $chemists->whereLike('name', $request->term);
+        }
+        $chemists = $chemists->select('id', 'name')->get();
+        return response()->json($chemists);
+    }
 }

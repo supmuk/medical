@@ -100,14 +100,13 @@ $(document).ready(function() {
 
 $(document).ready(function(){
     $('.select2-ajax').each(function(key, val){
-        console.log($(this).data('multiselect'));
-        select2('select2-ajax', $(this).data('url'), $(this).data('multiselect'))
+        select2($(this).attr('id'), $(this).data('url'), $(this).data('multiselect'))
     });
 });
 
 function select2(className, url, multiselect = false) {
     if(url != undefined && url != 'undefined') {
-        $('.'+className).select2({
+        $('#'+className).select2({
             placeholder: 'Keyword...',
             multiple: multiselect,
             ajax: {

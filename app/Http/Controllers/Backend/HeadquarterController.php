@@ -67,7 +67,7 @@ class HeadquarterController extends Controller
         if(!empty($request->term)) {
             $products = $products->whereLike('name', $request->term);
         }
-        $products = $products->select('id', 'name')->get();
+        $products = $products->where('is_active', '1')->select('id', 'name')->get();
         return response()->json($products);
     }
 }

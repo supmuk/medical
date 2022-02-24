@@ -6,6 +6,7 @@ Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('view:clear');
     Artisan::call('config:clear');
+    Artisan::call('storage:link');
 });
 
 Route::any('/', 'IndexController@home')->name('index');
@@ -48,7 +49,7 @@ Route::middleware('auth')->group(function () {
                 Route::post('save', 'save')->name('save');
 
                 Route::get('daily-call-report-index', 'dailyCallReportIndex')->name('daily-call-report-index');
-                Route::get('daily-call-report', 'dailyCallReport')->name('daily-call-report');
+                Route::get('daily-call-report/{id?}', 'dailyCallReport')->name('daily-call-report');
                 Route::post('daily-call-report-save', 'dailyCallReportSave')->name('daily-call-report-save');
 
                 Route::get('tour-program-index', 'tourProgramIndex')->name('tour-program-index');
@@ -74,6 +75,17 @@ Route::middleware('auth')->group(function () {
         });
     });
     
+    Route::prefix('place-of-working')->group(function () {
+        Route::name('place-of-working.')->group(function () {
+            Route::controller('Backend\placeOfWorkingController')->group(function () {
+                Route::get('index', 'index')->name('index');
+                Route::get('create', 'create')->name('create');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('save', 'save')->name('save');
+            }); 
+        });
+    });
+
     Route::prefix('product')->group(function () {
         Route::name('product.')->group(function () {
             Route::controller('Backend\ProductController')->group(function () {
@@ -88,4 +100,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::any('headquarter', 'Backend\HeadquarterController@listOfHeadquarter')->name('list-of-headquarter');
+Route::any('place', 'Backend\placeOfWorkingController@listOfPlace')->name('list-of-place');
 Route::any('verified-registered-employee', 'Backend\EmployeeController@verifiedRegisteredEmployee')->name('verified-registered-employee');
+Route::any('doctor-list', 'Backend\DoctorController@doctorList')->name('doctor-list');
+Route::any('chemist-list', 'Backend\ChemistController@chemistList')->name('chemist-list');

@@ -98,16 +98,34 @@ class EmployeeController extends Controller
     /**
      * Daily Call Report
      */
-    public function dailyCallReport() {
-        return view('backend.employee.daily-call-report');
+    public function dailyCallReport($id = null) {
+        $dailyReport = [];
+        if( !is_null($id) && is_numeric($id) ) {
+            $dailyReport = $this->dailyCallReport->findOrFail($id);
+        }
+        return view('backend.employee.daily-call-report')->with(['dailyReport'=>$dailyReport]);
     }
 
     /**
      * Save Daily Call Report
      */
     public function dailyCallReportSave(DailyCallReportRequest $request) {
-        $this->dailyCallReport->create($request->all());
-        return view('backend.employee.daily-call-report');
+        $data = [];
+        $data['user_id']                = $request->user_id;
+        $data['pob']                    = $request->pob;
+        
+        $data['place_of_working']       = implode(',', $request->place_of_working);
+        $data['headquarter_name']       = implode(',', $request->headquarter_name);
+        $data['working_with']           = implode(',', $request->working_with);
+        $data['visited_doctor_name']    = implode(',', $request->visited_doctor_name);
+        $data['visited_chemist_name']   = implode(',', $request->visited_chemist_name);
+
+        $this->dailyCallReport->updateOrCreate([
+            'id' => $request->id
+        ],$data);
+        // return view('backend.employee.daily-call-report-index')->with([]);
+        Session::flash('message', 'success|Daily Call Report Added Or Update Successfully !');
+        return redirect()->route('employee.daily-call-report-index');
     }
 
     /**

@@ -130,6 +130,28 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item @if(\Request::is('place-of-working/*') ) menu-open  @endif">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Place of working
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('place-of-working.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Place of working</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('place-of-working.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Place of working</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item @if(\Request::is('product/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>

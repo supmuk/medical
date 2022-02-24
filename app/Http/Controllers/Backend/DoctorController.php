@@ -54,4 +54,13 @@ class DoctorController extends Controller
     public function delete() {
 
     }
+
+    public function doctorList(Request $request) {
+        $doctors = $this->doctor->query();
+        if(!empty($request->term)) {
+            $doctors = $doctors->whereLike('name', $request->term);
+        }
+        $doctors = $doctors->select('id', 'name')->get();
+        return response()->json($doctors);
+    }
 }
