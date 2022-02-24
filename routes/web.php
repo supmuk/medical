@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
                 Route::post('daily-call-report-save', 'dailyCallReportSave')->name('daily-call-report-save');
 
                 Route::get('tour-program-index', 'tourProgramIndex')->name('tour-program-index');
-                Route::get('tour-program', 'tourProgram')->name('tour-program');
+                Route::get('tour-program/{id?}', 'tourProgram')->name('tour-program');
                 Route::post('tour-program-save', 'tourProgramSave')->name('tour-program-save');
                 
                 Route::get('standard-fare-chart-index', 'standardFareChartIndex')->name('standard-fare-chart-index');
@@ -88,3 +88,4 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::any('headquarter', 'Backend\HeadquarterController@listOfHeadquarter')->name('list-of-headquarter');
+Route::any('verified-registered-employee', 'Backend\EmployeeController@verifiedRegisteredEmployee')->name('verified-registered-employee');

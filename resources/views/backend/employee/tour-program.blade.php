@@ -18,21 +18,27 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label>Date of tour</label>
-                                <input type="text" name="date_of_tour" class="form-control" placeholder="Date of tour">
+                                <input type="date" name="date_of_tour" class="form-control" placeholder="Date of tour" value="{{printOldOrDbValue('date_of_tour', $tour)}}">
                                 @error('date_of_tour')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label>Place</label>
-                                <input type="text" name="place" class="form-control" placeholder="place">
+                                <input type="text" name="place" class="form-control" placeholder="place" value="{{printOldOrDbValue('place', $tour)}}">
                                 @error('place')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label>Working with</label>
-                                <input type="text" name="working_with" class="form-control" placeholder="Working with">
+                                <select name="working_with[]" id="working_with" class="form-control select2-ajax" data-multiselect="true" multiple="multiple" data-url="{{route('verified-registered-employee')}}">
+                                    @if(!empty($tour) && !empty($tour->working_with))
+                                    @foreach(explode(',',$tour->working_with) as $key => $val)
+                                        <option value="{{$val}}" selected> {{fetchingSingleValue('users', 'id', $val, 'name')}} </option>
+                                    @endforeach
+                                    @endif
+                                </select>
                                 @error('working_with')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 </head>
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        background-color : #080808;
+    }
+</style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -56,30 +61,58 @@
 <!-- Page specific script -->
 <script>
 $(document).ready(function() {
-  $('.select2').select2({
-    placeholder: 'Keyword...',
-    multiple: true,
-    ajax: {
-        type: 'GET',
-        url: "{{route('product.list-of-product')}}",
-        processResults: function(data) {
-            return {
-                results: $.map(data, function(item) {
-                    return {
-                        text: item.name,
-                        id: item.id
-                    }
-                })
-            };
+    $('.select2').select2({
+        placeholder: 'Keyword...',
+        multiple: true,
+        ajax: {
+            type: 'GET',
+            url: "{{route('product.list-of-product')}}",
+            processResults: function(data) {
+                return {
+                    results: $.map(data, function(item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            }
         }
-    }
+    });
+    $('.headquarter-select2').select2({
+        placeholder: 'Keyword...',
+        ajax: {
+            type: 'GET',
+            url: "{{route('list-of-headquarter')}}",
+            processResults: function(data) {
+                return {
+                    results: $.map(data, function(item) {
+                        return {
+                            text: item.name,
+                            id: item.id
+                        }
+                    })
+                };
+            }
+        }
+    });
 });
-$('.headquarter-select2').select2({
+
+$(document).ready(function(){
+    $('.select2-ajax').each(function(key, val){
+        console.log($(this).data('multiselect'));
+        select2('select2-ajax', $(this).data('url'), $(this).data('multiselect'))
+    });
+});
+
+function select2(className, url, multiselect = false) {
+    if(url != undefined && url != 'undefined') {
+        $('.'+className).select2({
             placeholder: 'Keyword...',
-            // multiple: true,
+            multiple: multiselect,
             ajax: {
                 type: 'GET',
-                url: "{{route('list-of-headquarter')}}",
+                url: url,
                 processResults: function(data) {
                     return {
                         results: $.map(data, function(item) {
@@ -92,7 +125,9 @@ $('.headquarter-select2').select2({
                 }
             }
         });
-			});
+    }
+    
+}
 </script>
 @stack('scripts')
 </body>

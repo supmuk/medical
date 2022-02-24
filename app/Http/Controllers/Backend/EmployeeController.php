@@ -122,15 +122,27 @@ class EmployeeController extends Controller
     /**
      * Tour Program
      */
-    function tourProgram() {
-        return view('backend.employee.tour-program');
+    function tourProgram($id = null) {
+        $tour = [];
+        if($id != null && is_numeric($id)) {
+            $tour = $this->tourProgram->findOrFail($id);    
+        }
+        return view('backend.employee.tour-program')->with(['tour'=>$tour]);
     }
 
     /**
      * Save tour Program
      */
     function tourProgramSave(TourProgramRequest $request) {
-        $this->tourProgram->create($request->all());
+        $data = [];
+
+        $working_with           = implode(',', $request->working_with);
+        $data['working_with']   = $working_with;
+        $data['date_of_tour']   = $request->date_of_tour;
+        $data['place']          = $request->place;
+        $data['user_id']        = $request->user_id;
+
+        $this->tourProgram->create($data);
         Session::flash('message', 'success|Tour Program Added or Update Successfully !');
         return redirect()->route('employee.tour-program-index');
     }
@@ -169,5 +181,14 @@ class EmployeeController extends Controller
         $this->standardFareChart->updateOrCreate(['id'=>$request->id],$request->all());
         Session::flash('message', 'success|Standard Fare Chart Added Or Update Successfully !');
         return redirect()->route('employee.standard-fare-chart-index');
+    }
+
+    public function verifiedRegisteredEmployee(Request $request) {
+        $users = $this->user->query();
+        if(!empty($request->term)) {
+            $users = $users->whereLike('name', $request->term);
+        }
+        $users = $users->where(['is_admin'=> '0', 'is_active'=>1])->select('id', 'name')->get();
+        return response()->json($users);
     }
 }

@@ -35,7 +35,8 @@
                             </div>
                             <div class="form-group">
                                 <label>One way distance</label>
-                                <input type="number" name="one_way_distance" class="form-control" placeholder="One way distance" value="{{printOldOrDbValue('one_way_distance', $standardFare)}}">
+                                <input type="number" name="one_way_distance" aria-describedby="one_way_distance_help" class="form-control" placeholder="One way distance" value="{{printOldOrDbValue('one_way_distance', $standardFare)}}">
+                                <small id="one_way_distance_help" class="form-text text-muted">Enter distance in Kilometer</small>
                                 @error('one_way_distance')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

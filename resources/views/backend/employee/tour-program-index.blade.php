@@ -37,9 +37,9 @@
                                     <td>{{$value->date_of_tour ?? '-'}}</td>
                                     <td>{{$value->place ?? '-'}}</td>
                                     <td>{{$value->working_with ?? '-'}}</td>
-                                    {{-- <td>
-                                        <a href="{{route('headquarter.edit', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
-                                    </td> --}}
+                                    <td>
+                                        <a href="{{route('employee.tour-program', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>
