@@ -104,3 +104,7 @@ Route::any('place', 'Backend\placeOfWorkingController@listOfPlace')->name('list-
 Route::any('verified-registered-employee', 'Backend\EmployeeController@verifiedRegisteredEmployee')->name('verified-registered-employee');
 Route::any('doctor-list', 'Backend\DoctorController@doctorList')->name('doctor-list');
 Route::any('chemist-list', 'Backend\ChemistController@chemistList')->name('chemist-list');
+
+// Edit Profile
+Route::get('edit-profile', 'Backend\EmployeeController@editProfile')->name('edit-profile');
+Route::post('edit-profile-save', 'Backend\EmployeeController@editProfileSave')->name('edit-profile-save');

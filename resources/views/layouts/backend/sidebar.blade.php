@@ -174,6 +174,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item @if(\Request::is('edit-profile') ) menu-open  @endif">
+                    <a href="{{route('edit-profile')}}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                           Edit Profile
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

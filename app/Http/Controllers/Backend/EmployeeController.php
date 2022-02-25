@@ -8,6 +8,7 @@ use App\Http\Requests\StandardFareChart;
 use App\Http\Requests\TourProgramRequest;
 use App\Http\Requests\DailyCallReportRequest;
 use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\EditProfileRequest;
 use App\Models\StandardFareChart as StandardFareChartModel;
 use App\Models\TourProgram;
 use App\Models\DailyCallReport;
@@ -208,5 +209,15 @@ class EmployeeController extends Controller
         }
         $users = $users->where(['is_admin'=> '0', 'is_active'=>1])->select('id', 'name')->get();
         return response()->json($users);
+    }
+
+    public function editProfile(Request $request) {
+        return view('backend.employee.edit-profile')->with(['auth_user' => auth()->user()]);
+    }
+
+    public function editProfileSave(EditProfileRequest $request) {
+        $this->user->where('id', $request->id)->update($request->except(['_token']));
+        Session::flash('message', 'success|Update Successfully !');
+        return redirect()->route('edit-profile');
     }
 }
