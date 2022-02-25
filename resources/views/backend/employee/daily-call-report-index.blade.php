@@ -36,10 +36,34 @@
                             <tbody>
                                 @forelse($dailyCallReports as $key => $value)
                                 <tr>
-                                    <td>{{$value->place_of_working ?? '-'}}</td>
-                                    <td>{{$value->working_with ?? '-'}}</td>
-                                    <td>{{$value->visited_doctor_name ?? '-'}}</td>
-                                    <td>{{$value->visited_chemist_name ?? '-'}}</td>
+                                    <td>
+                                        @if(!empty($value->place_of_working))
+                                            @foreach(explode(',',$value->place_of_working) as $key1 => $val1)
+                                                <span class="badge badge-primary"> {{fetchingSingleValue('place_of_working', 'id', $val1, 'name')}} </span>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(!empty($value->working_with))
+                                            @foreach(explode(',',$value->working_with) as $key1 => $val1)
+                                                <span class="badge badge-primary"> {{fetchingSingleValue('users', 'id', $val1, 'name')}} </span>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(!empty($value->visited_doctor_name))
+                                            @foreach(explode(',',$value->visited_doctor_name) as $key1 => $val1)
+                                                <span class="badge badge-primary"> {{fetchingSingleValue('doctors', 'id', $val1, 'name')}} </span>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(!empty($value->visited_chemist_name))
+                                            @foreach(explode(',',$value->visited_chemist_name) as $key1 => $val1)
+                                                <span class="badge badge-primary"> {{fetchingSingleValue('chemists', 'id', $val1, 'name')}} </span>
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td>{{$value->pob ?? '-'}}</td>
                                     <td>
                                         <a href="{{route('employee.daily-call-report', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
