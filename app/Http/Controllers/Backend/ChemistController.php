@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Chemist;
 use App\Http\Requests\ChemistRequest;
 use Session;
+use App\Models\DailyCallReport;
 class ChemistController extends Controller
 {
     private $chemist;
+    private $dailyCallReport;
     public function __construct() {
         $this->chemist = new Chemist;
+        $this->dailyCallReport = new DailyCallReport;
     }
     public function index(Request $request) {
 
@@ -55,8 +58,20 @@ class ChemistController extends Controller
         return redirect()->route('chemist.index');
     }
 
-    public function delete() {
+    public function delete(Request $request) {
+        $id = $request->id ?? '';
+        $this->chemist->findOrFail($id);
 
+        $doctorExists = $this->dailyCallReport->chemistExists($id);
+        if($doctorExists) {
+            Session::flash('message', 'danger|Chemist assigned to daily report ! Please remove then try');
+            return redirect()->route('chemist.index');
+        }
+        else {
+            $this->chemist->findOrFail($id)->delete();
+            Session::flash('message', 'success|Chemist deleted successfully !');
+            return redirect()->route('chemist.index');
+        }
     }
 
     public function chemistList(Request $request) {

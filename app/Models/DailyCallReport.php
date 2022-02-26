@@ -11,4 +11,9 @@ class DailyCallReport extends Model {
         $doctor = $this->whereRaw('FIND_IN_SET('.$id.', visited_doctor_name)')->get();
         return ($doctor->count() > 0) ? true : false;
     }
+
+    public function chemistExists($id) {
+        $doctor = $this->whereRaw('FIND_IN_SET('.$id.', visited_doctor_name)')->get();
+        return ($doctor->count() > 0) ? true : false;
+    }
 }

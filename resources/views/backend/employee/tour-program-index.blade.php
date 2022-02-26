@@ -29,6 +29,7 @@
                                     <th>Date of tour</th>
                                     <th>Place</th>
                                     <th>Working with</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,9 +37,23 @@
                                 <tr>
                                     <td>{{$value->date_of_tour ?? '-'}}</td>
                                     <td>{{$value->place ?? '-'}}</td>
-                                    <td>{{$value->working_with ?? '-'}}</td>
+                                    <td>
+                                        @if(!empty($value->working_with))
+                                            @foreach(explode(',',$value->working_with) as $key1 => $val1)
+                                                <span class="badge badge-primary"> {{fetchingSingleValue('users', 'id', $val1, 'name')}} </span>
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="{{route('employee.tour-program', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
+                                        <form method="POST" action="{{route('employee.tour-program-delete')}}" class="d-inline delete-confirm">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <input type="hidden" name="id" value="{{$value->id}}">
+                                            <button type="submit" class="btn text-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @empty

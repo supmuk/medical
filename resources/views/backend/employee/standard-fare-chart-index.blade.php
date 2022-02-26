@@ -30,6 +30,7 @@
                                     <th>To</th>
                                     <th>One Way Distance</th>
                                     <th>Fare</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,6 +42,14 @@
                                     <td>{{$value->fare ?? '-'}}</td>
                                     <td>
                                         <a href="{{route('employee.standard-fare-chart-edit', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
+                                        <form method="POST" action="{{route('employee.standard-fare-chart-delete')}}" class="d-inline delete-confirm">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <input type="hidden" name="id" value="{{$value->id}}">
+                                            <button type="submit" class="btn text-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @empty

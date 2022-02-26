@@ -220,4 +220,38 @@ class EmployeeController extends Controller
         Session::flash('message', 'success|Update Successfully !');
         return redirect()->route('edit-profile');
     }
+
+    public function employeeDelete(Request $request) {
+
+        $id = $request->id ?? '';
+        $this->user->findOrFail($id)->delete();
+
+        Session::flash('message', 'success|User deleted successfully !');
+        return redirect()->route('employee.index');
+    }
+
+    public function dailyCallReportDelete(Request $request) {
+        
+        $id = $request->id ?? '';
+        $this->dailyCallReport->findOrFail($id)->delete();
+
+        Session::flash('message', 'success|Daily call report deleted successfully !');
+        return redirect()->route('employee.daily-call-report-index');
+    }
+
+    public function tourProgramDelete(Request $request) {
+        $id = $request->id ?? '';
+        $this->tourProgram->findOrFail($id)->delete();
+
+        Session::flash('message', 'success|Tour program deleted successfully !');
+        return redirect()->route('employee.tour-program-index');
+    }
+
+    public function standardFareChartDelete(Request $request) {
+        $id = $request->id ?? '';
+        $this->standardFareChart->findOrFail($id)->delete();
+
+        Session::flash('message', 'success|Standard fare chart deleted successfully !');
+        return redirect()->route('employee.standard-fare-chart-index');
+    }
 }

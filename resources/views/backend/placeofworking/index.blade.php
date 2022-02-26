@@ -41,6 +41,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Active</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,6 +51,14 @@
                                     <td>{{$value->is_active ? 'Active' : 'Inactive'}}</td>
                                     <td>
                                         <a href="{{route('place-of-working.edit', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
+                                        <form method="POST" action="{{route('place-of-working.delete')}}" class="d-inline delete-confirm">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <input type="hidden" name="id" value="{{$value->id}}">
+                                            <button type="submit" class="btn text-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @empty

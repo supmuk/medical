@@ -66,4 +66,12 @@ class placeOfWorkingController extends Controller
         $placeOfWorkings = $placeOfWorkings->where('is_active', '1')->select('id', 'name')->get();
         return response()->json($placeOfWorkings);
     }
+
+    public function delete(Request $request) {
+        $id = $request->id ?? '';
+        $this->placeOfWorking->findOrFail($id)->delete();
+
+        Session::flash('message', 'success|Place deleted successfully !');
+        return redirect()->route('place-of-working.index');
+    }
 }

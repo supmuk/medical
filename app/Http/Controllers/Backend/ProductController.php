@@ -56,8 +56,12 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
-    public function delete() {
+    public function delete(Request $request) {
+        $id = $request->id ?? '';
+        $this->product->findOrFail($id)->delete();
 
+        Session::flash('message', 'success|Product deleted successfully !');
+        return redirect()->route('product.index');
     }
 
     /**

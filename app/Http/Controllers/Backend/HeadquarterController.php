@@ -55,8 +55,12 @@ class HeadquarterController extends Controller
         return redirect()->route('headquarter.index');
     }
 
-    public function delete() {
+    public function delete(Request $request) {
+        $id = $request->id ?? '';
+        $this->headquarter->findOrFail($id)->delete();
 
+        Session::flash('message', 'success|Headquarter deleted successfully !');
+        return redirect()->route('headquarter.index');
     }
 
     /**
