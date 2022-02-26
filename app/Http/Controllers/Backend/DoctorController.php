@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
+use App\Models\DailyCallReport;
 use Session;
 class DoctorController extends Controller
 {
     private $doctor;
+    private $dailyCallReport;
     public function __construct() {
         $this->doctor = new Doctor;
+        $this->dailyCallReport = new DailyCallReport;
     }
     public function index(Request $request) {
 
@@ -51,8 +54,21 @@ class DoctorController extends Controller
         return redirect()->route('doctor.index');
     }
 
-    public function delete() {
+    public function delete(Request $request) {
 
+        $id = $request->id ?? '';
+        $this->doctor->findOrFail($id);
+
+        $doctorExists = $this->dailyCallReport->doctorExists($id);
+        if($doctorExists) {
+            Session::flash('message', 'danger|Doctor assigned to daily report ! Please remove then try');
+            return redirect()->route('doctor.index');
+        }
+        else {
+            $this->doctor->findOrFail($id)->delete();
+            Session::flash('message', 'success|Doctor deleted successfully !');
+            return redirect()->route('doctor.index');
+        }
     }
 
     public function doctorList(Request $request) {

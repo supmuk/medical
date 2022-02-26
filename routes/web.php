@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('add', 'create')->name('add');
                 Route::get('edit/{id}', 'edit')->name('edit');
                 Route::post('save', 'save')->name('save');
+                Route::delete('delete', 'delete')->name('delete');
             });
         });
     });

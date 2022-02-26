@@ -31,7 +31,6 @@
                 </div>
                 <div class="col-md-3 mt-4 pt-2">
                     <button type="submit" class="btn btn-primary">Search</button>
-                    {{-- <button type="reset" class="">Reset</button> --}}
                     <a href="{{route('doctor.index')}}" class="btn btn-primary">Reset</a>
                 </div>
             </div>
@@ -64,6 +63,14 @@
                                     <td>{{$value->speciality ?? '-'}}</td>
                                     <td>
                                         <a href="{{route('doctor.edit', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
+                                        <form method="POST" action="{{route('doctor.delete')}}" class="d-inline delete-confirm">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <input type="hidden" name="id" value="{{$value->id}}">
+                                            <button type="submit" class="btn text-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @empty

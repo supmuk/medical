@@ -99,8 +99,17 @@ $(document).ready(function() {
 });
 
 $(document).ready(function(){
+    // Common for select2
     $('.select2-ajax').each(function(key, val){
         select2($(this).attr('id'), $(this).data('url'), $(this).data('multiselect'))
+    });
+
+    // Delete Confirmation Dialog 
+    $('.delete-confirm').click(function(e){
+        e.preventDefault();
+        if (confirm('Are you sure?')) {
+            $(e.target).closest('form').submit();
+        }
     });
 });
 
