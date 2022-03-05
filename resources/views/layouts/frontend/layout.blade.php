@@ -30,6 +30,23 @@
 <link href="{{asset('assets/frontend/css/color-customize/color-customizer.css')}}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<style>
+    span.bottom-slider {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        font-style: italic;
+    }
+    .featured-step{
+        height: 100%;
+    }
+    .featured-step h5{
+        font-size: 15px;
+    }
+    .team-images:before{
+        content: none;
+    }
+</style>
 </head>
 
 <body>

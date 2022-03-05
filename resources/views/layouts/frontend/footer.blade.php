@@ -4,41 +4,26 @@
     <div class="primary-footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-logo mb-3">
-              <img id="footer-logo-img" class="img-fluid" src="images/logo.png" alt="">
-            </div>
-            <p class="mb-3">Hectolab Medical and Health Ut wisi enim ad minim veniam, wisi nibh tristique risus. quis laore nostrud exerci tation ulm hedi corper turet suscipit lobortis nisl ut aliquip erat volutpat</p> <a class="btn-simple" href="#"><span>Read More <i class="ms-2 fas fa-long-arrow-alt-right"></i></span></a>
-          </div>
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0 footer-list ps-lg-5">
-            <h5>Our <span class="text-theme">Department</span></h5>
-            <ul class="list-unstyled">
-              <li><a href="outpatient-depertment.html">Outpatient Depertment</a>
-              </li>
-              <li><a href="pediatrics-depertment.html">Pediatrics Depertment</a>
-              </li>
-              <li><a href="neurology-depertment.html">Neurology Depertment</a>
-              </li>
-              <li><a href="dental-depertment.html">Dental Depertment</a>
-              </li>
-              <li><a href="cardiology-depertment.html">Cardiology Depertment</a>
-              </li>
-              <li><a href="diagnostic-depertment.html">Diagnostic Depertment</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-6 col-md-12 mt-5 mt-lg-0 ps-lg-5">
+          <div class="col-lg-12 col-md-12 mt-5 mt-lg-0 ps-lg-5">
             <div class="row">
               <div class="col-sm-5 footer-list">
                 <h5>Quick <span class="text-theme">Link</span></h5>
                 <ul class="list-unstyled">
-                  <li><a href="about-us.html">About us</a>
+                  <li><a href="{{route('index')}}">Home</a>
                   </li>
-                  <li><a href="contact-1.html">Contact Us</a>
+                  <li><a href="{{route('about')}}">About</a>
                   </li>
-                  <li><a href="privacy-policy.html">Privacy Policy</a>
+                  <li><a href="{{route('contact')}}">Contact</a>
                   </li>
-                  <li><a href="terms-and-conditions.html">Terms & Condition</a>
+                  <li><a href="{{route('products')}}">Products</a>
+                  </li>
+                  <li><a href="{{route('login')}}">Employee Login</a>
+                  </li>
+                  <li><a href="{{route('register')}}">Employee Register</a>
+                  </li>
+                  <li><a href="{{route('privacy-policy')}}">Privacy Policy</a>
+                  </li>
+                  <li><a href="{{route('term-condition')}}">Terms & Condition</a>
                   </li>
                 </ul>
               </div>
@@ -46,30 +31,16 @@
                 <h5>Get In <span class="text-theme">Touch</span></h5>
                 <ul class="media-icon list-unstyled">
                   <li class="mb-4"> <i class="flaticon-paper-plane"></i>
-                    <p class="mb-0">423B, Road Wordwide Country, USA</p>
+                    <p class="mb-0">Flat No.1/3D, Kanak Vrindavan Apple AN, Gandhi Path
+                      Gram Sirsi, Jaipur, RAJASTHAN - 302021, INDIA</p>
                   </li>
                   <li class="mb-4"> <i class="flaticon-email"></i>
-                    <a href="mailto:themeht23@gmail.com">themeht23@gmail.com</a>
+                    <a href="mailto:ewinhealthcare@gmail.com">ewinhealthcare@gmail.com</a>
                   </li>
                   <li> <i class="flaticon-phone-call"></i>
                     <a href="tel:+912345678900">+91-234-567-8900</a>
                   </li>
                 </ul>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <div class="subscribe-form">
-                <form id="mc-form" class="group row align-items-center g-0">
-                  <div class="col-sm-8">
-                    <input type="email" value="" name="EMAIL" class="email box-shadow" id="mc-email" placeholder="Email Address" required="">
-                  </div>
-                  <div class="col-sm-4 mt-2 mt-sm-0">
-                    <input class="btn btn-theme btn-circle" type="submit" name="subscribe" value="Subscribe">
-                  </div>
-                  <label for="mc-email" class="subscribe-message"></label>
-                </form>
-                </div>
               </div>
             </div>
           </div>
@@ -85,8 +56,6 @@
                 <li class="social-gplus"><a href="#"><i class="fab fa-google-plus-g"></i></a>
                 </li>
                 <li class="social-linkedin"><a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </li>
-                <li class="social-skype"><a href="#"><i class="fab fa-skype"></i></a>
                 </li>
               </ul>
             </div>

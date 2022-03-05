@@ -13,6 +13,8 @@ Route::any('/', 'IndexController@home')->name('index');
 Route::any('about', 'IndexController@about')->name('about');
 Route::any('contact', 'IndexController@contact')->name('contact');
 Route::any('products', 'IndexController@products')->name('products');
+Route::any('privacy-policy', 'IndexController@privacyPolicy')->name('privacy-policy');
+Route::any('term-condition', 'IndexController@termCondition')->name('term-condition');
 
 Auth::routes();
 

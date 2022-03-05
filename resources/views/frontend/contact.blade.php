@@ -67,14 +67,14 @@
             <div class="col-lg-6 col-md-12 mx-auto theme-bg text-white p-5 form-info box-shadow">
               <div>
                 <h2 class="title text-white">Get In <span>Touch!</span></h2>
-                <p>Contact for any help dolor sit amet, consectetur adipiscing elit. Nulla nec massa enim. Aliquam viverra at est ullamcorper sollicitudin. Proin a leo sit amet nunc malesuada imperdiet pharetra ut eros.</p>
                 <ul class="contact-info list-unstyled mt-4">
                   <li class="mb-4"><i class="flaticon-paper-plane"></i><span>Address:</span>
-                    <p>423B, Road Wordwide Country, USA</p>
+                    <p>Flat No.1/3D, Kanak Vrindavan Apple AN, Gandhi Path
+                      Gram Sirsi, Jaipur, RAJASTHAN - 302021, INDIA</p>
                   </li>
                   <li class="mb-4"><i class="flaticon-phone-call"></i><span>Phone:</span><a href="tel:+912345678900">+91-234-567-8900</a>
                   </li>
-                  <li><i class="flaticon-email"></i><span>Email</span><a href="mailto:themeht23@gmail.com"> themeht23@gmail.com</a>
+                  <li><i class="flaticon-email"></i><span>Email</span><a href="mailto:ewinhealthcare@gmail.com">ewinhealthcare@gmail.com</a>
                   </li>
                 </ul>
               </div>
@@ -86,7 +86,7 @@
         <div class="row">
           <div class="col-12">
             <div class="map iframe-h-2">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.840108181602!2d144.95373631539215!3d-37.8172139797516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1497005461921" allowfullscreen=""></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.955433374789!2d75.72121761547909!3d26.904909466901998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db49910d000dd%3A0x35ad6d1d89101c80!2sGandhi%20Path%20W%2C%20Jaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1646462542475!5m2!1sen!2sin" allowfullscreen=""></iframe>
             </div>
           </div>
         </div>

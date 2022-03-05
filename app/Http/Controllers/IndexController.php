@@ -14,7 +14,8 @@ class IndexController extends Controller
     }
 
     public function home() {
-        return view('frontend.home');
+        $products = $this->product->orderBy('id', 'desc')->limit(5)->get();
+        return view('frontend.home')->with(['products'=>$products]);
     }
     public function about() {
         return view('frontend.about');
@@ -27,5 +28,13 @@ class IndexController extends Controller
     public function products() {
         $products = $this->product->paginate(12);
         return view('frontend.products')->with(['products'=>$products]);
+    }
+
+    public function privacyPolicy() {
+        return view('frontend.privacy-ploicy');
+    }
+
+    public function termCondition() {
+        return view('frontend.term-condition');        
     }
 }
