@@ -109,6 +109,17 @@ Route::middleware('auth')->group(function () {
             }); 
         });
     });
+
+    Route::prefix('pages')->group(function() {
+        Route::name('pages.')->group(function () {
+            Route::controller('Backend\PageController')->group(function () {
+                Route::get('index', 'index')->name('index');
+                Route::get('create', 'create')->name('create');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('save', 'save')->name('save');
+            });
+        });
+    });
 });
 
 Route::any('headquarter', 'Backend\HeadquarterController@listOfHeadquarter')->name('list-of-headquarter');

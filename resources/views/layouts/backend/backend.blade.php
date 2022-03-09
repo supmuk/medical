@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
 </head>
 <style>
     .select2-container--default .select2-selection--multiple .select2-selection__choice {
@@ -59,6 +60,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/js/demo.js')}}"></script>
 <!-- Page specific script -->
+<script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
 <script>
 $(document).ready(function() {
     $('.select2').select2({
@@ -111,6 +113,16 @@ $(document).ready(function(){
             $(e.target).closest('form').submit();
         }
     });
+
+    $('#summernote').summernote({
+        callbacks: {
+        onChange: function(contents, $editable) {
+            console.log('onChange:', contents, $editable);
+        }
+    }
+
+    });
+
 });
 
 function select2(className, url, multiselect = false) {
@@ -136,6 +148,7 @@ function select2(className, url, multiselect = false) {
     }
     
 }
+
 </script>
 @stack('scripts')
 </body>

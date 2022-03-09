@@ -46,9 +46,11 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <input type="hidden" name="id" value="{{$value->id}}">
+                                            @if(auth()->user()->is_admin)
                                             <button type="submit" class="btn text-danger">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            @endif
                                         </form>
                                     </td>
                                 </tr>

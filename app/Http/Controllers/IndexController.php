@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Page;
 
 class IndexController extends Controller
 {
     private $product;
+    private $page;
 
     public function __construct() {
         $this->product = new Product;
+        $this->page = new Page;
     }
 
     public function home() {
@@ -31,7 +34,9 @@ class IndexController extends Controller
     }
 
     public function privacyPolicy() {
-        return view('frontend.privacy-ploicy');
+        $content = $this->page->whereSlug('privacy-policy')->first();
+        // dd($content);
+        return view('frontend.privacy-ploicy')->with(['content' => $content]);
     }
 
     public function termCondition() {

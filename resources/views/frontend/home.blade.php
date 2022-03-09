@@ -4,7 +4,7 @@
 
 <section class="fullscreen-banner p-0 overflow-hidden">
     <div class="banner-slider owl-carousel no-pb">
-      <div class="item" data-bg-img="{{asset('assets/frontend/images/bg/01.jpg')}}">
+      <div class="item" data-bg-img="{{asset('assets/images/01.jpeg')}}">
         <div class="align-center pt-0">
           <div class="container">
             <div class="row">
@@ -17,7 +17,7 @@
           </div>
         </div>
       </div>
-      <div class="item white-overlay" data-bg-img="{{asset('assets/frontend/images/bg/02.jpg')}}" data-overlay="8">
+      <div class="item white-overlay" data-bg-img="{{asset('assets/images/02.jpeg')}}" data-overlay="8">
         <div class="align-center pt-0">
           <div class="container">
             <div class="row text-center justify-content-center">
@@ -25,14 +25,12 @@
                 <h5 class="text-white letter-space-1 mb-3 animated6" data-wow-delay="4s">Medical Center</h5> 
                 <h1 class="text-black mb-3 animated11">Honesty, Integrity & Hard Work is credo of our company
                 </h1> 
-                {{-- <p class="lead text-black mb-3 animated5">We try to make maximum use of all our experience, accumulated potential,
-                  <br>knowledge of modern medicine.</p> --}}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="item" data-bg-img="{{asset('assets/frontend/images/bg/03.jpg')}}">
+      <div class="item" data-bg-img="{{asset('assets/images/03.jpeg')}}">
         <div class="align-center pt-0">
           <div class="container">
             <div class="row text-end">
@@ -92,7 +90,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5 col-md-12">
-            <img class="img-fluid" src="{{asset('assets/frontend/images/about/01.png')}}" alt="">
+            <img class="img-fluid" src="{{asset('assets/images/about-01.jpeg')}}" alt="">
           </div>
           <div class="col-lg-7 col-md-12 mt-5 mt-lg-0">
             <div class="section-title mb-2">
@@ -362,7 +360,7 @@
                     <div class="col-md-6">
                       <div class="testimonial-avatar box-shadow">
                         <div class="testimonial-img">
-                          <img class="img-fluid w-100 radius" src="{{asset('assets/frontend/images/testimonial/01.jpg')}}" alt="">
+                          <img class="img-fluid w-100 radius" src="{{asset('assets/images/lc-joshi.jpeg')}}" alt="">
                         </div>
                       </div>
                     </div>
@@ -384,7 +382,7 @@
                     <div class="col-md-6">
                       <div class="testimonial-avatar box-shadow">
                         <div class="testimonial-img">
-                          <img class="img-fluid w-100 radius" src="{{asset('assets/frontend/images/testimonial/02.jpg')}}" alt="">
+                          <img class="img-fluid w-100 radius" src="{{asset('assets/images/review-img.jpg')}}" alt="">
                         </div>
                       </div>
                     </div>
@@ -406,7 +404,7 @@
                     <div class="col-md-6">
                       <div class="testimonial-avatar box-shadow">
                         <div class="testimonial-img">
-                          <img class="img-fluid w-100 radius" src="{{asset('assets/frontend/images/testimonial/03.jpg')}}" alt="">
+                          <img class="img-fluid w-100 radius" src="{{asset('assets/images/review-img.jpg')}}" alt="">
                         </div>
                       </div>
                     </div>
@@ -428,7 +426,7 @@
                     <div class="col-md-6">
                       <div class="testimonial-avatar box-shadow">
                         <div class="testimonial-img">
-                          <img class="img-fluid w-100 radius" src="{{asset('assets/frontend/images/testimonial/03.jpg')}}" alt="">
+                          <img class="img-fluid w-100 radius" src="{{asset('assets/images/review-img.jpg')}}" alt="">
                         </div>
                       </div>
                     </div>
@@ -465,108 +463,110 @@
               <p class="mb-0">Hectolab Provide Greate Services Exerci tation ullamcorper suscipitorens lobortis nisl ut aliquip ex ea commodo, Exerci tation ullamcorper suscipitorens Ut elit tellus.</p>
             </div>
           </div>
-          <div class="col-lg-6 col-md-12 text-lg-end">
+          {{-- <div class="col-lg-6 col-md-12 text-lg-end">
             <div class="portfolio-filter">
               <button data-filter="" class="is-checked">All</button>
               <button data-filter=".cat1">Surgery</button>
               <button data-filter=".cat2">Laboratory</button>
               <button data-filter=".cat3">Dental</button>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
       <div class="container-fluid p-0">
         <div class="row">
           <div class="col-lg-12 col-md-12">
             <div class="grid row columns-4 g-0 popup-gallery text-center">
-              <div class="grid-item cat1">
+              @for($i = 1; $i <= 56; $i++)
+              <div class="grid-item">
                 <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/01.jpg')}}" alt="">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-'.$i.'.jpeg')}}" alt="">
+                  {{-- <div class="gallery-hover">
+                    <div class="gallery-icon">
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-"'.$i.'".jpeg')}}"> <i class="flaticon-eye"></i>
+                      </a>
+                    </div>
+                  </div> --}}
+                </div>
+              </div>
+              @endfor
+              {{-- <div class="grid-item">
+                <div class="gallery-item">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-02.jpeg')}}" alt="">
                   <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/01.jpg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-02.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="grid-item cat1 cat3">
+              <div class="grid-item">
                 <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/02.jpg')}}" alt="">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-03.jpeg')}}" alt="">
                   <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/02.jpg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-03.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="grid-item cat4 cat2">
+              <div class="grid-item">
                 <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/03.jpg')}}" alt="">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-04.jpeg')}}" alt="">
                   <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/03.jpg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-04.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="grid-item cat2 cat3">
+              <div class="grid-item">
                 <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/04.jpg')}}" alt="">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-05.jpeg')}}" alt="">
                   <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/04.jpg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-05.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="grid-item cat3 cat1">
+              <div class="grid-item">
                 <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/05.jpg')}}" alt="">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-06.jpeg')}}" alt="">
                   <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/05.jpg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-06.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="grid-item cat2 cat4">
+              <div class="grid-item">
                 <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/06.jpg')}}" alt="">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-07.jpeg')}}" alt="">
                   <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/06.jpg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-07.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="grid-item cat2 cat4">
+              <div class="grid-item">
                 <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/07.jpg')}}" alt="">
+                  <img class="img-fluid" src="{{asset('assets/images/gallery-08.jpeg')}}" alt="">
                   <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/06.jpg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-08.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="grid-item cat2 cat4">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/frontend/images/gallery/08.jpg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/frontend/images/gallery/large/06.jpg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>

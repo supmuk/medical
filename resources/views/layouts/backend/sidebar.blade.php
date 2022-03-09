@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
-    	<img src="{{asset('assets/images/logo.jpeg')}}" alt="Ewin Care" class="brand-image" style="opacity: .8">
+    	<img src="{{asset('assets/images/logo.svg')}}" alt="Ewin Care" class="brand-image" style="opacity: .8">
     	<span class="brand-text font-weight-light">Ewin Care</span>
     </a>
     <!-- Sidebar -->
@@ -182,6 +182,24 @@
                         </p>
                     </a>
                 </li>
+                @if(auth()->user()->is_admin)
+                <li class="nav-item @if(\Request::is('pages/*') ) menu-open  @endif">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Pages
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('pages.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Page List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
