@@ -31,6 +31,7 @@
                                 @error('description')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                                {{-- <div id="editor">This is some sample content.</div> --}}
                             </div>
 
                         </div>

@@ -17,12 +17,19 @@
     
     <section>
       <div class="container">
+        @if(session('success'))
+        <div class="alert alert-success">
+          {{ session('success') }}
+        </div>
+        @endif
         <div class="row g-0 box-shadow">
-          <div class="col-lg-4 col-md-12 dark-bg image-column-h" data-bg-img="{{asset('assets/frontend/images/testimonial/03.jpg')}}"></div>
+          <div class="col-lg-4 col-md-12 dark-bg image-column-h" data-bg-img="{{asset('assets/images/about-01.jpeg')}}"></div>
           <div class="col-lg-8 col-md-12">
             <div class="white-bg p-5">
               <h2 class="title mb-4">Contact Us For <span>Help</span></h2> 
-              <form id="contact-form" class="row" method="post" action="">
+              <form  class="row" method="post" action="{{route('contactPost')}}">
+                {{-- id="contact-form" --}}
+                @csrf
                 <div class="messages"></div>
                 <div class="form-group col-sm-6">
                   <input id="form_name" type="text" name="name" class="form-control" placeholder="User Name" required="required" data-error="Username is required.">
@@ -37,7 +44,7 @@
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group col-sm-6">
-                  <input id="form_subject" type="text" name="Subject" class="form-control" placeholder="Subject" required="required" data-error="Subject is required">
+                  <input id="form_subject" type="text" name="subject" class="form-control" placeholder="Subject" required="required" data-error="Subject is required">
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="form-group col-sm-12">
@@ -45,7 +52,8 @@
                   <div class="help-block with-errors"></div>
                 </div>
                 <div class="col-sm-12">
-                  <button class="btn btn-border btn-radius"><span>Submit Now</span>
+                  {{-- <input type="submit" value="Submit Now" class="btn btn-border btn-radius"> --}}
+                  <button class="btn btn-border btn-radius" type="submit"><span>Submit Now</span>
                   </button>
                 </div>
               </form>

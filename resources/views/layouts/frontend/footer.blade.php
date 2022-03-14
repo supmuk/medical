@@ -17,10 +17,15 @@
                   </li>
                   <li><a href="{{route('products')}}">Products</a>
                   </li>
+                  @if (!Auth::check())
                   <li><a href="{{route('login')}}">Employee Login</a>
                   </li>
                   <li><a href="{{route('register')}}">Employee Register</a>
                   </li>
+                  @else
+                  <li><a href="{{route('doctor.index')}}">Dashboard</a>
+                  </li>
+                  @endif
                   <li><a href="{{route('privacy-policy')}}">Privacy Policy</a>
                   </li>
                   <li><a href="{{route('term-condition')}}">Terms & Condition</a>
@@ -39,6 +44,10 @@
                   </li>
                   <li> <i class="flaticon-phone-call"></i>
                     <a href="tel:+912345678900">+91-234-567-8900</a>
+                  </li>
+                  <li class="mt-4">
+                    <i class="fa fa-copyright"></i>
+                    <p class="mb-0">Copyright {{date('Y')}} - Ewin Healthcare Pvt. Ltd</p>
                   </li>
                 </ul>
               </div>

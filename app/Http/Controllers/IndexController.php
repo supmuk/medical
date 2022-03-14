@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Page;
+use Mail;
 
 class IndexController extends Controller
 {
@@ -21,11 +22,31 @@ class IndexController extends Controller
         return view('frontend.home')->with(['products'=>$products]);
     }
     public function about() {
-        return view('frontend.about');
+        $content = $this->page->whereSlug('about')->first();
+        $products = $this->product->orderBy('id', 'desc')->limit(5)->get();
+        return view('frontend.about')->with(['content' => $content, 'products'=>$products]);
     }
     
-    public function contact() {
+    public function contact(Request $request) {
         return view('frontend.contact');
+    }
+
+    public function contactPost(Request $request) {
+        // dd(var_dump($request->message));
+        Mail::send('email.contact', [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message1' => $request->message 
+        ],
+            function ($message) use ($request){
+                    $message->from($request->email);
+                    $message->to(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                            ->subject('Contact Form');
+    });
+        return back()->with('success', 'Thanks for contacting us, We will get back to you soon!');
+        // return redirect()->route('contact');
     }
 
     public function products() {
@@ -35,11 +56,11 @@ class IndexController extends Controller
 
     public function privacyPolicy() {
         $content = $this->page->whereSlug('privacy-policy')->first();
-        // dd($content);
         return view('frontend.privacy-ploicy')->with(['content' => $content]);
     }
 
     public function termCondition() {
-        return view('frontend.term-condition');        
+        $content = $this->page->whereSlug('term-condition')->first();
+        return view('frontend.term-condition')->with(['content' => $content]);
     }
 }

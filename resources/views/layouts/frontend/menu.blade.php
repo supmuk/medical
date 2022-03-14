@@ -37,7 +37,7 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg">
               <a class="navbar-brand logo" href="{{route('index')}}">
-                <img id="logo-img" class="img-fluid" src="{{asset('assets/images/logo.svg')}}" alt="">
+                <img id="logo-img" class="img-fluid" src="{{asset('assets/images/logo.jpeg')}}" alt="">
               </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
               </button>
@@ -48,8 +48,12 @@
                   <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('about') ? 'active' : '' }}" href="{{route('about')}}">About</a></li>
                   <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('contact') ? 'active' : '' }}" href="{{route('contact')}}">Contact</a></li>
                   <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('products') ? 'active' : '' }}" href="{{route('products')}}">Products</a></li>
+                  @if (!Auth::check())
                   <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('login') ? 'active' : '' }}" href="{{route('login')}}">Employee Login</a></li>
                   <li class="nav-item dropdown"> <a class="nav-link {{ Request::routeIs('register') ? 'active' : '' }}" href="{{route('register')}}">Employee Register</a></li>
+                  @else
+                  <li class="nav-item dropdown"> <a class="nav-link" href="{{route('doctor.index')}}">Dashboard</a></li>
+                  @endif
                 </ul>
               </div>
             </nav>

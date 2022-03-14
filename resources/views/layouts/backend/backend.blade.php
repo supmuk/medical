@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
+  <script src="https://cdn.ckeditor.com/4.17.2/full-all/ckeditor.js"></script>
+
 </head>
 <style>
     .select2-container--default .select2-selection--multiple .select2-selection__choice {
@@ -60,7 +62,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/js/demo.js')}}"></script>
 <!-- Page specific script -->
-<script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
+{{-- <script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script> --}}
+{{-- <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> --}}
+{{-- <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script> --}}
+{{-- <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script> --}}
 <script>
 $(document).ready(function() {
     $('.select2').select2({
@@ -114,15 +119,8 @@ $(document).ready(function(){
         }
     });
 
-    $('#summernote').summernote({
-        callbacks: {
-        onChange: function(contents, $editable) {
-            console.log('onChange:', contents, $editable);
-        }
-    }
-
-    });
-
+    // $('#summernote').ckeditor();
+    CKEDITOR.replace( document.querySelector( '#summernote' ) );
 });
 
 function select2(className, url, multiselect = false) {

@@ -46,6 +46,112 @@
     .team-images:before{
         content: none;
     }
+    .fixed-width h5{
+        width: 80%;
+        word-break: break-all;
+    }
+
+    .progress {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    height: 40px;
+    margin: 0 0 1em;
+    padding: 0;
+}
+
+.progress > li {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    color: #fff !important;
+    list-style: none;
+    font-size: 16px;
+    background-color: #bbb;
+    position: relative;
+}
+
+.progress > li:last-child {
+    border-right: 0;
+}
+
+.progress > li.completed {
+    background-color: #0999be;
+}
+
+.progress > li:not(.completed) {
+  padding-left: 20px;
+}
+
+.progress > li span {
+    position: relative;
+    top: 5px;
+ }
+
+.progress > li span .order {
+    display: inline-block;
+    border: 2px solid #555;
+    border-radius: 27px;
+    width: 27px;
+    height: 27px;
+    background-color: #fff;
+    color: #555;
+    margin: 0 5px 0 10px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    top: -1px;
+    line-height: 25px;
+}
+
+.diagonal {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #bbb;
+  top: 0; right: 0;
+  position: absolute;
+  transform: translateX(100%);
+  z-index: 1;
+}
+.completed .diagonal {
+  border-left-color: #0999be;
+}
+
+.progress > li span {
+    position: relative;
+    top: 10px;
+    font-weight: 500;
+}
+
+.inspired{
+    background-color: #cd3b46!important;
+}
+.determined{
+    background-color: #09881f !important;
+}
+.dynamic{
+    background-color: #d3b201 !important;
+}
+.remarkable{
+    background-color: #212d81 !important;
+}
+.noble{
+    background-color: #5d43a6 !important;
+}
+.mfp-title{
+    display: none;
+}
+.pdf-container img{
+    max-width: 500px;
+    width: auto;
+}
+.content-fix{
+    word-break: break-word;
+}
 </style>
 </head>
 
@@ -62,7 +168,7 @@
     @include('layouts.frontend.footer')
 </div>
 
-<div class="scroll-top"><a class="smoothscroll" href="#top"><i class="flaticon-stethoscope"></i></a></div>
+<div class="scroll-top"><a class="smoothscroll" href="#top"><i class="fas fa-angle-up"></i></a></div>
 
 <script src="{{asset('assets/frontend/js/theme.js')}}"></script>
 <script src="{{asset('assets/frontend/js/magnific-popup/jquery.magnific-popup.min.js')}}"></script> 

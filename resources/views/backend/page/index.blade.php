@@ -13,7 +13,7 @@
 </section>
 <section class="content">
     <div class="container-fluid">
-        <form action="{{route('product.index')}}" method="get" class="m-3">
+        <form action="{{route('pages.index')}}" method="get" class="m-3">
             <div class="row">
                 <div class="col-md-3">
                     <label for="">Name</label>
@@ -37,7 +37,6 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -45,7 +44,6 @@
                                 @forelse($pages as $key => $value)
                                 <tr>
                                     <td>{{$value->title ?? '-'}}</td>
-                                    <td>{{$value->description ?? '-'}}</td>
                                     <td>
                                         <a href="{{route('pages.edit', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
                                         <form method="POST" action="{{route('product.delete')}}" class="d-inline delete-confirm">

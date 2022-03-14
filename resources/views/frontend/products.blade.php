@@ -16,7 +16,13 @@
             <div class="row">
                 @forelse ($products as $item)
                     <div class="col-md-4 mt-3 h-100">
-                        <img src="{{asset('storage/product/'.$item->file_path)}}" class="img-fluid img-thumbnail" />
+                        <div class="card">
+                            <img class="card-img-top img-fluid img-thumbnail" src="{{asset('storage/product/'.$item->file_path)}}" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">{{$item->name}}</h5>
+                              <p class="card-text">{{$item->description}}</p>
+                            </div>
+                        </div>
                     </div>
                 @empty
                     No Product Found !

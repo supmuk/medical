@@ -9,7 +9,7 @@
           <div class="container">
             <div class="row">
               <div class="col-lg-8 col-md-12 me-auto">
-                <h5 class="text-white letter-space-1 mb-3 animated6">Medical Center</h5>
+                <h5 class="text-white letter-space-1 mb-3 animated6">Ewin healthcare</h5>
                 <h1 class="text-black mb-3 animated8">Ewin healthcare pvt. ltd</h1> 
                 <p class="lead text-black mb-3 animated5">A Promise for healthy life</p>
               </div>
@@ -22,7 +22,7 @@
           <div class="container">
             <div class="row text-center justify-content-center">
               <div class="col-lg-10 col-md-12">
-                <h5 class="text-white letter-space-1 mb-3 animated6" data-wow-delay="4s">Medical Center</h5> 
+                <h5 class="text-white letter-space-1 mb-3 animated6" data-wow-delay="4s">Ewin healthcare</h5> 
                 <h1 class="text-black mb-3 animated11">Honesty, Integrity & Hard Work is credo of our company
                 </h1> 
               </div>
@@ -35,7 +35,7 @@
           <div class="container">
             <div class="row text-end">
               <div class="col-lg-8 col-md-12 ms-auto">
-                <h5 class="text-white letter-space-1 mb-3 animated6">Medical Center</h5> 
+                <h5 class="text-white letter-space-1 mb-3 animated6">Ewin healthcare</h5> 
                 <h1 class="text-black mb-3 animated9">Ewin healthcare pvt. ltd. is a ISO 9001:2015 certified company</h1> 
               </div>
             </div>
@@ -54,7 +54,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-12">
-            <div class="featured-step"> <span>01</span>
+            <div class="featured-step fixed-width"> <span>01</span>
               <h5 class="mb-3">Growing Pharmaceutical Company</h5>
               <div class="featured-desc">
                 <p>Ewin Healthcare Pvt Ltd is one of the most Emerging & Fastest Growing Pharmaceutical Company.</p>
@@ -62,7 +62,7 @@
             </div>
           </div>
           <div class="col-lg-4 col-md-12 mt-3 mt-lg-0">
-            <div class="featured-step"> <span>02</span>
+            <div class="featured-step fixed-width"> <span>02</span>
               <h5 class="mb-3">Complete range of healthcare products</h5>
               <div class="featured-desc">
                 <p>Ewin Healthcare Pvt Ltd Offering a complete range of healthcare products across India</p>
@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="col-lg-4 col-md-12 mt-3 mt-lg-0">
-            <div class="featured-step"> <span>03</span>
+            <div class="featured-step fixed-width"> <span>03</span>
               <h5 class="mb-3">Safe and Trusted products</h5>
               <div class="featured-desc">
                 <p>Our aim is to be a global leader, in healthcare industry, by providing excellent, safe and trusted products of the highest quality to our customers.</p>
@@ -101,31 +101,87 @@
             <p class="line-h-3 mb-4">Ewin Healthcare Pvt Ltd symbolizes reliability. We believe in making a difference and not just medicines.</p>
             <div class="row text-center">
               <div class="col-sm-4">
-                <div class="ht-rounded-skill">
-                  <div class="rounded-skill" data-circle-startTime=0 data-circle-maxValue="60" data-circle-dialWidth=12 data-circle-type="progress">
-                    <div class="skill-bg">
-                      <div class="skill-num">00:00:00</div>
-                    </div>
-                  </div> <span class="skill-title">Medical Center</span>
-                </div>
+                <ul class="progress">
+                    <li class="completed">
+                        <span>
+                            Purpose
+                        </span>
+                        <div class="diagonal"></div>
+                    </li>
+                    <li class="inspired">
+                        <span>
+                            Inspired
+                        </span>
+                    </li>
+                </ul>
               </div>
-              <div class="col-sm-4 mt-5 mt-sm-0">
-                <div class="ht-rounded-skill">
-                  <div class="rounded-skill" data-circle-startTime=0 data-circle-maxValue="80" data-circle-dialWidth=12 data-circle-type="progress">
-                    <div class="skill-bg">
-                      <div class="skill-num">00:00:00</div>
-                    </div>
-                  </div> <span class="skill-title">Success Case</span>
-                </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm-4 mt-5 mt-sm-0 offset-sm-2">
+                <ul class="progress">
+                  <li class="completed">
+                      <span>
+                        Focus
+                      </span>
+                      <div class="diagonal"></div>
+                  </li>
+                  <li class="determined">
+                      <span>
+                        Determined
+                      </span>
+                  </li>
+              </ul>
               </div>
-              <div class="col-sm-4 mt-5 mt-sm-0">
-                <div class="ht-rounded-skill">
-                  <div class="rounded-skill" data-circle-startTime=0 data-circle-maxValue="90" data-circle-dialWidth=12 data-circle-type="progress">
-                    <div class="skill-bg">
-                      <div class="skill-num">00:00:00</div>
-                    </div>
-                  </div> <span class="skill-title">Happy Patients</span>
-                </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm-4 mt-5 mt-sm-0 offset-sm-4">
+                <ul class="progress">
+                  <li class="completed">
+                      <span>
+                        Innovation
+                      </span>
+                      <div class="diagonal"></div>
+                  </li>
+                  <li class="dynamic">
+                      <span>
+                        Dynamic
+                      </span>
+                  </li>
+              </ul>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm-4 mt-5 mt-sm-0 offset-sm-6">
+                <ul class="progress">
+                  <li class="completed">
+                      <span>
+                        Quality
+                      </span>
+                      <div class="diagonal"></div>
+                  </li>
+                  <li class="remarkable">
+                      <span>
+                        Remarkable
+                      </span>
+                  </li>
+              </ul>
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="col-sm-4 mt-5 mt-sm-0 offset-sm-8">
+                <ul class="progress">
+                  <li class="completed">
+                      <span>
+                        Vision
+                      </span>
+                      <div class="diagonal"></div>
+                  </li>
+                  <li class="noble">
+                      <span>
+                        Noble
+                      </span>
+                  </li>
+              </ul>
               </div>
             </div>
           </div>
@@ -138,7 +194,7 @@
     
     <!--timetable start-->
     
-    <section class="p-0 overflow-hidden text-white">
+    <section class="p-0 overflow-hidden text-white mt-10">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12 col-md-12 p-lg-5 p-3 dark-bg">
@@ -156,7 +212,7 @@
     
     <!--featured start-->
     
-    <section>
+    {{-- <section>
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6">
@@ -233,14 +289,14 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
     
     <!--featured end-->
     
     
     <!--service start-->
     @if(!empty($products))
-    <section class="text-center pt-0">
+    <section class="text-center pt-0 mt-10">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -250,12 +306,13 @@
                 <div class="service-item">
                   <div class="service-images">
                     <img class="img-fluid" src="{{asset('storage/product/'.$item->file_path)}}" alt="">
-                    <div class="service-icon"> <i class="flaticon-doctor"></i>
+                    <div class="service-icon"> 
+                      {{-- <i class="flaticon-doctor"></i> --}}
                     </div>
                   </div>
                   <h4>{{$item->name}}</h4>
                   <div class="service-description">
-                    <p>{{Str::substr($item->description, 0, 50).'...'}}</p> 
+                    <p>{{$item->description}}</p> 
                   </div>
                 </div>
               </div>
@@ -382,7 +439,7 @@
                     <div class="col-md-6">
                       <div class="testimonial-avatar box-shadow">
                         <div class="testimonial-img">
-                          <img class="img-fluid w-100 radius" src="{{asset('assets/images/review-img.jpg')}}" alt="">
+                          <img class="img-fluid w-100 radius" src="{{asset('assets/images/manager.jpeg')}}" alt="">
                         </div>
                       </div>
                     </div>
@@ -390,7 +447,7 @@
                       <div class="testimonial-content"> <span><i class="fas fa-quote-left"></i></span>
                         <p>“ We have been provided with the best possible resources to communicate between company and our team. Being the bridge between company and the team it is very important to provide with good working environment to the team which we our company is providing without fail. ”</p>
                         <div class="testimonial-caption">
-                          {{-- <h6>Thomas James</h6> --}}
+                          <h6>Mr. Ashvani Aggarwal</h6>
                           <label>- Manager</label>
                         </div>
                       </div>
@@ -481,92 +538,15 @@
               <div class="grid-item">
                 <div class="gallery-item">
                   <img class="img-fluid" src="{{asset('assets/images/gallery-'.$i.'.jpeg')}}" alt="">
-                  {{-- <div class="gallery-hover">
+                  <div class="gallery-hover">
                     <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-"'.$i.'".jpeg')}}"> <i class="flaticon-eye"></i>
+                      <a class="popup popup-img" href="{{asset('assets/images/gallery-'.$i.'.jpeg')}}"> <i class="flaticon-eye"></i>
                       </a>
                     </div>
-                  </div> --}}
+                  </div>
                 </div>
               </div>
               @endfor
-              {{-- <div class="grid-item">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/images/gallery-02.jpeg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-02.jpeg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid-item">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/images/gallery-03.jpeg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-03.jpeg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid-item">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/images/gallery-04.jpeg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-04.jpeg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid-item">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/images/gallery-05.jpeg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-05.jpeg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid-item">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/images/gallery-06.jpeg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-06.jpeg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid-item">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/images/gallery-07.jpeg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-07.jpeg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="grid-item">
-                <div class="gallery-item">
-                  <img class="img-fluid" src="{{asset('assets/images/gallery-08.jpeg')}}" alt="">
-                  <div class="gallery-hover">
-                    <div class="gallery-icon">
-                      <a class="popup popup-img" href="{{asset('assets/images/gallery-08.jpeg')}}"> <i class="flaticon-eye"></i>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
             </div>
           </div>
         </div>
@@ -614,21 +594,6 @@
             <div class="team-member text-center">
               <div class="team-images">
                 <img class="img-fluid" src="{{asset('assets/images/vijay-sharma.jpeg')}}" alt="">
-                {{-- <div class="team-about">
-                  <p>Cras ultricies ligula sed magna dictum porta, Sed ut perspiciatis unde omnis iste natus error sit voluptat</p>
-                  <div class="team-social-icon">
-                    <ul>
-                      <li><a href="#"><i class="fab fa-facebook-f"></i></a>
-                      </li>
-                      <li><a href="#"><i class="fab fa-twitter"></i></a>
-                      </li>
-                      <li><a href="#"><i class="fab fa-google-plus-g"></i></a>
-                      </li>
-                      <li><a href="#"><i class="fab fa-linkedin-in"></i></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div> --}}
               </div>
               <div class="team-description"> <span>Founder Member</span>
                 <h5><a href="javascript:void(0);">Mr. Vijay Sharma</a></h5> 
@@ -749,5 +714,11 @@
     
     <!--client end-->
     
+    {{-- <embed src="{{asset('assets/document/ewinhealthcare.pdf')}}" width="100%" height="500px" class="mt-10" /> --}}
+    {{-- <iframe src="{{asset('assets/document/ewinhealthcare.pdf')}}" width="auto" height="auto" frameborder="0"></iframe> --}}
+    <div class="my-10 text-center row m-0">
+      <img src="{{asset('assets/images/ewinhealthcare-1.png')}}" class="img img-responsive" />
+    </div>
+
     </div>
 @endsection

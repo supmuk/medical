@@ -17,9 +17,11 @@ class PageController extends Controller
 
     public function index(Request $request) {
         $page = $this->page->query();
-
+        if (!empty($request->name)) {
+            $page->orWhere('title', 'like', '%'.$request->name.'%');
+        }
         $pages = $page->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
-        return view('backend.page.index')->with(['pages'=>$pages]);
+        return view('backend.page.index')->with(['pages'=>$pages, 'request'=>$request->all()]);
     }
 
     public function create() {
@@ -37,7 +39,6 @@ class PageController extends Controller
     }
 
     public function save(PageRequest $request) {
-        dd($request->all());
         $data = [
             'title' => $request->title,
             'description' => $request->description,

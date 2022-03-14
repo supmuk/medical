@@ -11,7 +11,8 @@ Route::get('/clear-cache', function () {
 
 Route::any('/', 'IndexController@home')->name('index');
 Route::any('about', 'IndexController@about')->name('about');
-Route::any('contact', 'IndexController@contact')->name('contact');
+Route::get('contact', 'IndexController@contact')->name('contact');
+Route::post('contact', 'IndexController@contactPost')->name('contactPost');
 Route::any('products', 'IndexController@products')->name('products');
 Route::any('privacy-policy', 'IndexController@privacyPolicy')->name('privacy-policy');
 Route::any('term-condition', 'IndexController@termCondition')->name('term-condition');
