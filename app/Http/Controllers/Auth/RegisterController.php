@@ -111,6 +111,12 @@ class RegisterController extends Controller
 
         event(new Registered($user = $this->create($request->all())));
 
-        return redirect($this->redirectPath())->with('message', 'Your message');
+        return redirect($this->redirectPath())->with('message', 'Your account has been created successfully ! Please wait for approval from Admin.');
+    }
+
+    protected function redirectTo()
+    {
+        session(['message', 'Your account has been created successfully ! Please wait for approval from Admin.']);
+        return '/login';
     }
 }

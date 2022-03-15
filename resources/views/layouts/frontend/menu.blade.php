@@ -8,7 +8,7 @@
                 <li class="list-inline-item"><a href="mailto:ewinhealthcare@gmail.com"><i class="flaticon-email"></i>ewinhealthcare@gmail.com</a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="tel:+912345678900"> <i class="flaticon-phone-call"></i>+91-234-567-8900</a>
+                  <a href="tel:+916376769003"> <i class="flaticon-phone-call"></i>+91-6376769003</a>
                 </li>
               </ul>
             </div>
@@ -16,13 +16,12 @@
           <div class="col-lg-4 col-md-12 text-end d-lg-block d-none">
             <div class="social-icons social-hover top-social-list">
               <ul class="list-inline">
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a>
+                <li><a href="https://www.facebook.com/profile.php?id=100079199446025"><i class="fab fa-facebook-f"></i></a>
                 </li>
-                <li><a href="#"><i class="fab fa-google-plus-g"></i></a>
+                
+                <li><a href="https://twitter.com/EwinHealthcare?t=CDLrnEpwnPKzkaBkzXfWDg&s=08"><i class="fab fa-twitter"></i></a>
                 </li>
-                <li><a href="#"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li><a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <li><a href="https://www.instagram.com/ewinhealthcare.pvt.ltd/"><i class="fab fa-instagram"></i></a>
                 </li>
               </ul>
             </div>
