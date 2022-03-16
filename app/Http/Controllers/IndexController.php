@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Page;
 use Mail;
+use App\Models\User;
+use App\Models\Doctor;
+use App\Models\Chemist;
+use Carbon\Carbon;
+use DB;
 
 class IndexController extends Controller
 {
@@ -15,6 +20,41 @@ class IndexController extends Controller
     public function __construct() {
         $this->product = new Product;
         $this->page = new Page;
+
+        $this->doctor = new Doctor;
+        $this->user = new User;
+        $this->chemist = new Chemist;
+    }
+
+    public function dashboard() {
+        // User
+        $users = $this->user->select(DB::raw("DATE(created_at) as date"),DB::raw("COUNT(id) as total_count"))
+        ->groupBy(DB::raw("DATE(created_at)"))->get();
+        $user[] = ['Year','Count'];
+        
+        foreach($users as $key => $value) {
+            $user[++$key] = [$value->date, (int)$value->total_count];
+        }
+
+        // Doctor
+        $doctors = $this->doctor->select(DB::raw("DATE(created_at) as date"),DB::raw("COUNT(id) as total_count"))
+        ->groupBy(DB::raw("DATE(created_at)"))->get();
+        $doctor[] = ['Year','Count'];
+        
+        foreach($doctors as $key => $value) {
+            $doctor[++$key] = [$value->date, (int)$value->total_count];
+        }
+        
+        // Chemist
+        $chemists = $this->chemist->select(DB::raw("DATE(created_at) as date"),DB::raw("COUNT(id) as total_count"))
+        ->groupBy(DB::raw("DATE(created_at)"))->get();
+        $chemist[] = ['Year','Count'];
+        
+        foreach($chemists as $key => $value) {
+            $chemist[++$key] = [$value->date, (int)$value->total_count];
+        }
+
+        return view('backend.dashboard.index')->with(['user' => json_encode($user), 'doctor' => json_encode($doctor), 'chemist' => json_encode($chemist)]);
     }
 
     public function home() {
