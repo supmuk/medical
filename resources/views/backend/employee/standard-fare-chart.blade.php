@@ -35,7 +35,7 @@
                             </div>
                             <div class="form-group">
                                 <label>One way distance</label>
-                                <input type="number" name="one_way_distance" aria-describedby="one_way_distance_help" class="form-control" placeholder="One way distance" value="{{printOldOrDbValue('one_way_distance', $standardFare)}}">
+                                <input type="number" name="one_way_distance" id="one_way_distance" aria-describedby="one_way_distance_help" class="form-control" placeholder="One way distance" value="{{printOldOrDbValue('one_way_distance', $standardFare)}}" onchange="updateFare(this.value)">
                                 <small id="one_way_distance_help" class="form-text text-muted">Enter distance in Kilometer</small>
                                 @error('one_way_distance')
                                     <div class="text-danger">{{ $message }}</div>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Fare</label>
-                                <input type="number" name="fare" class="form-control" placeholder="Fare" value="{{printOldOrDbValue('fare', $standardFare)}}">
+                                <input type="number" name="fare" id="totalFare" class="form-control" placeholder="Fare" value="{{printOldOrDbValue('fare', $standardFare)}}" readonly="readonly">
                                 @error('fare')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -62,3 +62,25 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            // updateFare($("#one_way_distance").val());
+        });
+        var fareAmount = "{{ $fareAmount ?? 0 }}";
+        function updateFare(val) {
+            
+            if( val != null && val != 'undefined' && val != "" ) {
+                var totalFare;
+                if(fareAmount) {
+                   totalFare = fareAmount * val;
+                }
+                else {
+                    totalFare = val;
+                }
+                $("#totalFare").val(totalFare);
+            }
+        }
+    </script>
+@endpush

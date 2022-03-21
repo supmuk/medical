@@ -10,8 +10,13 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                    with font-awesome or any other icon font library -->
+                <li class="nav-item @if(\Request::is('graph') ) active  @endif">
+                    <a href="{{route('doctor.add')}}" class="nav-link menu-open ">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                
                 <li class="nav-item @if(\Request::is('doctor/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -200,6 +205,30 @@
                     </ul>
                 </li>
                 @endif
+
+                <li class="nav-item @if(\Request::is('fare_amount/*') ) menu-open  @endif">
+                    <a href="javascript:void(0);" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Setting Manager
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('fare_amount.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Fare Amount</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('fare_amount.directAllowanceindex')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Direct Allowance</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Headquarter;
 use App\Http\Requests\HeadquarterRequest;
 use Session;
+use Auth;
 
 class HeadquarterController extends Controller
 {
@@ -45,7 +46,8 @@ class HeadquarterController extends Controller
         if( $request->has('is_active') ) {
             $data['is_active'] = 1;
         }
-        $data['name'] = $request->name;
+        $data['name']           = $request->name;
+        $data['created_by']     = Auth::id();
         
         $this->headquarter->updateOrCreate([
             'id' => $request->id

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PlaceOfWorking;
 use App\Http\Requests\PlaceOfWorking as placeRequest;
 use Session;
+use Auth;
 
 class placeOfWorkingController extends Controller
 {
@@ -45,7 +46,9 @@ class placeOfWorkingController extends Controller
         if( $request->has('is_active') ) {
             $data['is_active'] = 1;
         }
-        $data['name'] = $request->name;
+        $data['name']               = $request->name;
+        $data['headquarter_name']   = $request->headquarter_name;
+        $data['created_by']         = Auth::id();
         
         $this->placeOfWorking->updateOrCreate([
             'id' => $request->id

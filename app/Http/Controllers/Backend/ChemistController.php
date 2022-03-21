@@ -8,6 +8,7 @@ use App\Models\Chemist;
 use App\Http\Requests\ChemistRequest;
 use Session;
 use App\Models\DailyCallReport;
+use Auth;
 class ChemistController extends Controller
 {
     private $chemist;
@@ -53,6 +54,7 @@ class ChemistController extends Controller
         $product = implode(',', $request->product);
         $data = $request->except('product');
         $data['product'] = $product;
+        $data['created_by'] = Auth::id();
         $this->chemist->updateOrCreate(['id'=>$request->id], $data);
         Session::flash('message', 'success|Chemist Added or Updated Successfully !');
         return redirect()->route('chemist.index');

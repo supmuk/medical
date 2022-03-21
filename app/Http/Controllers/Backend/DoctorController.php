@@ -8,6 +8,7 @@ use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
 use App\Models\DailyCallReport;
 use Session;
+use Auth;
 class DoctorController extends Controller
 {
     private $doctor;
@@ -49,7 +50,9 @@ class DoctorController extends Controller
     }
 
     public function save(DoctorRequest $request) {
-        $this->doctor->updateOrCreate(['id'=>$request->id], $request->all());
+        $data = $request->all();
+        $data['created_by'] = Auth::id();
+        $this->doctor->updateOrCreate(['id'=>$request->id], $data);
         Session::flash('message', 'success|Doctor Added or Update Successfully !');
         return redirect()->route('doctor.index');
     }

@@ -24,6 +24,27 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Only Authenticated User Can Access Below Routes
 
 Route::middleware('auth')->group(function () {
+    Route::prefix('dashboard')->group(function(){
+        Route::any('index', 'IndexController@dashboard')->name('graph');
+    });
+
+    Route::prefix('fare-amount')->group(function () {
+        Route::name('fare_amount.')->group(function () {
+            Route::controller('Backend\SettingManagerController')->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/add', 'create')->name('add');
+                Route::get('edit/{id}', 'edit')->name('edit');
+                Route::post('/save', 'save')->name('save');
+
+
+                Route::get('direct-allowance', 'directAllowanceindex')->name('directAllowanceindex');
+                Route::get('direct-allowance-create', 'directAllowanceCreate')->name('directAllowanceCreate');
+                Route::get('direct-allowance-edit/{id}', 'directAllowanceEdit')->name('directAllowanceEdit');
+                Route::post('direct-allowance-save', 'directAllowanceSave')->name('directAllowanceSave');
+            });
+        });
+    });
+
     Route::prefix('doctor')->group(function () {
         Route::name('doctor.')->group(function () {
             Route::controller('Backend\DoctorController')->group(function () {
@@ -132,3 +153,7 @@ Route::any('chemist-list', 'Backend\ChemistController@chemistList')->name('chemi
 // Edit Profile
 Route::get('edit-profile', 'Backend\EmployeeController@editProfile')->name('edit-profile');
 Route::post('edit-profile-save', 'Backend\EmployeeController@editProfileSave')->name('edit-profile-save');
+
+Route::prefix('charts')->group(function() {
+    Route::get('user', 'ChartController@userChart');
+});

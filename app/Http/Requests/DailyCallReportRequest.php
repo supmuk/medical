@@ -30,7 +30,7 @@ class DailyCallReportRequest extends FormRequest
             'visited_doctor_name' => 'required',
             'visited_chemist_name' => 'required',
             'pob' => 'required',
-            'stockist_visited' => 'required',
+            // 'stockist_visited' => 'required',
         ];
     }
 }

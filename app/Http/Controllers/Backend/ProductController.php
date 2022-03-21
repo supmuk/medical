@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Session;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -49,6 +50,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'file_path' => $request->file->hashName(),
+            'created_by' => Auth::id()
         ];
 
         $this->product->updateOrCreate(['id'=>$request->id], $data);

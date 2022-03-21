@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Page;
 use App\Http\Requests\PageRequest;
 use Session;
+use Auth;
 
 class PageController extends Controller
 {
@@ -42,6 +43,7 @@ class PageController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
+            'created_by' => Auth::id()
         ];
 
         $this->page->updateOrCreate(['id'=>$request->id], $data);

@@ -92,12 +92,48 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Stockist Visited</label>
                                 <input type="text" name="stockist_visited" class="form-control" placeholder="Stockist Visited">
                                 @error('stockist_visited')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                            </div> --}}
+                            <div class="form-group">
+                                <label>Product</label>
+                                <select class="form-control select2" name="product[]" multiple="multiple" value="">
+                                    @if(!empty($dailyReport) && !empty($dailyReport->product))
+                                    @foreach(explode(',',$dailyReport->product) as $key => $val)
+                                        <option value="{{$val}}" selected> {{fetchingSingleValue('products', 'id', $val, 'name')}} </option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                                @error('product')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Direct Allowance</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios1" value="{{$directAllowance->hq}}">
+                                    <label class="form-check-label" for="exampleRadios1">
+                                      Headquarter
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios2" value="{{$directAllowance->ehq}}">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                       Ex Headquarter
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios3" value="{{$directAllowance->outstation}}">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                      Outstation
+                                    </label>
+                                </div>
+                                
+                                </div>
                             </div>
                         </div>
                         <!-- /.card-body -->

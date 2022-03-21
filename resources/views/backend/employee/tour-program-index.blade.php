@@ -36,7 +36,13 @@
                                 @forelse($tourProgram as $key => $value)
                                 <tr>
                                     <td>{{$value->date_of_tour ?? '-'}}</td>
-                                    <td>{{$value->place ?? '-'}}</td>
+                                    <td>
+                                        @if(!empty($value->place))
+                                            @foreach(explode(',',$value->place) as $key1 => $val1)
+                                                <span class="badge badge-primary"> {{fetchingSingleValue('place_of_working', 'id', $val1, 'name')}} </span>
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td>
                                         @if(!empty($value->working_with))
                                             @foreach(explode(',',$value->working_with) as $key1 => $val1)

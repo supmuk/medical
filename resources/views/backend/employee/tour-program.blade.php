@@ -14,6 +14,9 @@
                     <!-- form start -->
                     <form action="{{route('employee.tour-program-save')}}" method="POST">
                         @csrf
+                        @if(!empty($tour))
+                            <input type="hidden" name="id" value="{{$tour->id}}">
+                        @endif
                         <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                         <div class="card-body">
                             <div class="form-group">
@@ -24,9 +27,15 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Place</label>
-                                <input type="text" name="place" class="form-control" placeholder="place" value="{{printOldOrDbValue('place', $tour)}}">
-                                @error('place')
+                                <label>Place of working</label>
+                                <select name="place[]" id="place_of_working" class="form-control select2-ajax" data-multiselect="true" multiple="multiple" data-url="{{route('list-of-place')}}">
+                                    @if(!empty($tour) && !empty($tour->place))
+                                        @foreach(explode(',',$tour->place) as $key => $val)
+                                            <option value="{{$val}}" selected> {{fetchingSingleValue('place_of_working', 'id', $val, 'name')}} </option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                @error('place_of_working')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

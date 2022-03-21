@@ -31,6 +31,7 @@
                                     <th>Visited doctor name</th>
                                     <th>Visited chemist name</th>
                                     <th>POB</th>
+                                    <th>Direact Allowance</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -66,6 +67,7 @@
                                         @endif
                                     </td>
                                     <td>{{$value->pob ?? '-'}}</td>
+                                    <td>{{$value->direct_allowance ?? '-'}}</td>
                                     <td>
                                         <a href="{{route('employee.daily-call-report', ['id' => $value->id])}}"><i class="fas fa-edit"></i></a>
                                         <form method="POST" action="{{route('employee.daily-call-report-delete')}}" class="d-inline delete-confirm">

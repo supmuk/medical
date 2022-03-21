@@ -14,7 +14,7 @@ use App\Models\TourProgram;
 use App\Models\DailyCallReport;
 use Auth;
 use Session;
-use App\Models\User;
+use App\Models\{User, FareAmount, DirectAllowance};
 
 class EmployeeController extends Controller
 {
@@ -22,11 +22,20 @@ class EmployeeController extends Controller
     private $tourProgram;
     private $dailyCallReport;
     private $user;
+    private $fareAmount;
+    private $directAllowance;
+
     public function __construct() {
         $this->standardFareChart = new StandardFareChartModel;
         $this->tourProgram = new TourProgram;
         $this->dailyCallReport = new DailyCallReport;
         $this->user = new User;
+        $this->fareAmount = new FareAmount;
+        $this->directAllowance = new DirectAllowance;
+    }
+
+    public function getAllDirectAllowance() {
+        return $this->directAllowance->first();
     }
     /**
      * Return All Employee
@@ -104,13 +113,14 @@ class EmployeeController extends Controller
         if( !is_null($id) && is_numeric($id) ) {
             $dailyReport = $this->dailyCallReport->findOrFail($id);
         }
-        return view('backend.employee.daily-call-report')->with(['dailyReport'=>$dailyReport]);
+        return view('backend.employee.daily-call-report')->with(['dailyReport'=>$dailyReport, 'directAllowance' => $this->getAllDirectAllowance()]);
     }
 
     /**
      * Save Daily Call Report
      */
     public function dailyCallReportSave(DailyCallReportRequest $request) {
+        
         $data = [];
         $data['user_id']                = $request->user_id;
         $data['pob']                    = $request->pob;
@@ -120,6 +130,9 @@ class EmployeeController extends Controller
         $data['working_with']           = implode(',', $request->working_with);
         $data['visited_doctor_name']    = implode(',', $request->visited_doctor_name);
         $data['visited_chemist_name']   = implode(',', $request->visited_chemist_name);
+        $data['product']                = implode(',', $request->product);
+        $data['created_by']             = Auth::id();
+        $data['direct_allowance']       = $request->direct_allowance;
 
         $this->dailyCallReport->updateOrCreate([
             'id' => $request->id
@@ -158,10 +171,14 @@ class EmployeeController extends Controller
         $working_with           = implode(',', $request->working_with);
         $data['working_with']   = $working_with;
         $data['date_of_tour']   = $request->date_of_tour;
-        $data['place']          = $request->place;
+        // $data['place']          = $request->place;
         $data['user_id']        = $request->user_id;
+        $data['created_by']     = Auth::id();
+        $data['place']          = implode(',', $request->place);
 
-        $this->tourProgram->create($data);
+        $this->tourProgram->updateOrCreate([
+            'id' => $request->id
+        ],$data);
         Session::flash('message', 'success|Tour Program Added or Update Successfully !');
         return redirect()->route('employee.tour-program-index');
     }
@@ -178,7 +195,8 @@ class EmployeeController extends Controller
      * Standard fare chart manager form
      */
     function standardFareChart() {
-        return view('backend.employee.standard-fare-chart')->with(['standardFare' => '']);
+        $fareAmount = $this->fareAmount->value('amount');
+        return view('backend.employee.standard-fare-chart')->with(['standardFare' => '', 'fareAmount' => '']);
     }
 
     /**
@@ -186,18 +204,24 @@ class EmployeeController extends Controller
      */
     function standardFareChartEdit($id) {
         $standardFare = $this->standardFareChart->find($id);
+        $fareAmount = $this->fareAmount->value('amount');
+
         if(! $standardFare) {
             Session::flash('message', 'danger|Standard Fare Chart not found !');
             return redirect()->route('employee.standard-fare-chart-index');
         } 
-        return view('backend.employee.standard-fare-chart')->with(['standardFare' => $standardFare]);
+        return view('backend.employee.standard-fare-chart')->with(['standardFare' => $standardFare, 'fareAmount' => $fareAmount]);
     }
 
     /**
      * Save standard fare chart manager save and update
      */
     function standardFareChartSave(StandardFareChart $request) {
-        $this->standardFareChart->updateOrCreate(['id'=>$request->id],$request->all());
+        
+        $data                   = $request->all();
+        $data['created_by']     = Auth::id();
+        
+        $this->standardFareChart->updateOrCreate(['id'=>$request->id],$data);
         Session::flash('message', 'success|Standard Fare Chart Added Or Update Successfully !');
         return redirect()->route('employee.standard-fare-chart-index');
     }
