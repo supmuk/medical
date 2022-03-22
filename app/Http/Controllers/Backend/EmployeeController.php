@@ -15,6 +15,8 @@ use App\Models\DailyCallReport;
 use Auth;
 use Session;
 use App\Models\{User, FareAmount, DirectAllowance};
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class EmployeeController extends Controller
 {
@@ -56,8 +58,10 @@ class EmployeeController extends Controller
      * Edit employee details
      */
     public function edit($id) {
-        $user = $this->user->findOrFail($id);
-        return view('backend.employee.edit', ['user' => $user]);        
+        $user = $this->user->with('roles')->findOrFail($id);
+        $roles = Role::get();
+        // dd($user->getAllPermissions()->toArray());
+        return view('backend.employee.edit', ['user' => $user, 'roles' => $roles]);        
     }
 
     /**
@@ -91,8 +95,15 @@ class EmployeeController extends Controller
         $updateArr['designation'] = $request->designation;
         $updateArr['headquarter_name'] = $request->headquarter_name;
 
-        User::where('id', $request->id)->update($updateArr);
-        Session::flash('message', 'Employee Updated Successfully !');
+        $user = User::where('id', $request->id)->update($updateArr);
+        $user = User::find($request->id);
+        
+        // Assigning Roles
+        $user->syncRoles($request->roles);
+
+        // Sending Mail
+
+        Session::flash('message', 'success|Employee Updated Successfully !');
         return redirect()->route('employee.index');
     }
 

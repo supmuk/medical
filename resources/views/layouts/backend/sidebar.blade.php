@@ -11,12 +11,13 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item @if(\Request::is('graph') ) active  @endif">
-                    <a href="{{route('doctor.add')}}" class="nav-link menu-open ">
+                    <a href="{{route('graph')}}" class="nav-link menu-open ">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 
+                @role('doctor manager')
                 <li class="nav-item @if(\Request::is('doctor/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -39,6 +40,9 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
+
+                @role('chemist manager')
                 <li class="nav-item @if(\Request::is('chemist/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -61,6 +65,8 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
+                
                 <li class="nav-item @if(\Request::is('employee/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -69,50 +75,66 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        @can('list employee')
                         <li class="nav-item">
                             <a href="{{route('employee.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Employee List</p>
                             </a>
                         </li>
+                        @endcan
+                        @can('list daily call report')
                         <li class="nav-item">
                             <a href="{{route('employee.daily-call-report-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Daily Call Report List</p>
                             </a>
                         </li>
+                        @endcan
+                        @can('add daily call report')
                         <li class="nav-item">
                             <a href="{{route('employee.daily-call-report')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Daily Call Report</p>
                             </a>
                         </li>
+                        @endcan
+                        @can('list tour program')
                         <li class="nav-item">
                             <a href="{{route('employee.tour-program-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tour Program List</p>
                             </a>
                         </li>
+                        @endcan
+                        @can('add tour program')
                         <li class="nav-item">
                             <a href="{{route('employee.tour-program')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tour Program</p>
                             </a>
                         </li>
+                        @endcan
+                        @can('list standard fare chart')
                         <li class="nav-item">
                             <a href="{{route('employee.standard-fare-chart-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Standard fare chart List</p>
                             </a>
                         </li>
+                        @endcan
+                        @can('add standard fare chart')
                         <li class="nav-item">
                             <a href="{{route('employee.standard-fare-chart')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Standard fare chart</p>
                             </a>
                         </li>
+                        @endcan
                     </ul>
                 </li>
+                
+                @role('headquarter manager')
                 <li class="nav-item @if(\Request::is('headquarter/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -135,6 +157,9 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
+
+                @role('place of working manager')
                 <li class="nav-item @if(\Request::is('place-of-working/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -157,6 +182,9 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
+
+                @role('product manager')
                 <li class="nav-item @if(\Request::is('product/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -179,6 +207,8 @@
                         </li>
                     </ul>
                 </li>
+                @endrole
+
                 <li class="nav-item @if(\Request::is('edit-profile') ) menu-open  @endif">
                     <a href="{{route('edit-profile')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -187,7 +217,8 @@
                         </p>
                     </a>
                 </li>
-                @if(auth()->user()->is_admin)
+                
+                @role('page manager')
                 <li class="nav-item @if(\Request::is('pages/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -204,8 +235,9 @@
                         </li>
                     </ul>
                 </li>
-                @endif
+                @endrole
 
+                @role('setting manager')
                 <li class="nav-item @if(\Request::is('fare_amount/*') ) menu-open  @endif">
                     <a href="javascript:void(0);" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
@@ -228,7 +260,7 @@
                         </li>
                     </ul>
                 </li>
-
+                @endrole
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

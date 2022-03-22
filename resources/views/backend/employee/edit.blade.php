@@ -161,6 +161,19 @@
                                 <input id="active" type="checkbox" name="active" {{ ($user->is_active) ? "checked" : '' }}>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="active" class="col-md-12 col-form-label text-md-end">{{ __('Choose Manager') }}</label>
+                            @foreach($roles as $key => $role)
+                            <div class="col-md-3 px-4">
+                                <div class="form-group">
+                                    <input class="form-check-input" name="roles[]" type="checkbox" id="role{{$role->id}}" value="{{$role->id}}" {{ (in_array($role->name, $user->getRoleNames()->toArray()) ? 'checked' : '') }} /> 
+                                    <label class="form-check-label" for="role{{$role->id}}">
+                                        {{$role->name}}
+                                    </label>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
