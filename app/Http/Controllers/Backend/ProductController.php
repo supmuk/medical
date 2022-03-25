@@ -21,7 +21,7 @@ class ProductController extends Controller
         if(!empty($request->name)) {
             $product->orWhere('name', 'like', '%'.$request->name.'%');
         }
-        $products = $product->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $products = $product->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.product.index')->with(['products'=>$products, 'request'=>$request->all()]);
     }
 

@@ -22,7 +22,7 @@ class placeOfWorkingController extends Controller
         if(!empty($request->name)) {
             $placeOfWorking->orWhere('name', 'like', '%'.$request->name.'%');
         }
-        $placeOfWorking = $placeOfWorking->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $placeOfWorking = $placeOfWorking->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.placeofworking.index')->with(['placeOfWorking'=>$placeOfWorking, 'request'=>$request->all()]);
     }
     

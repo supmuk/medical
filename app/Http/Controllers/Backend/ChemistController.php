@@ -31,7 +31,7 @@ class ChemistController extends Controller
             $chemist->orWhere('mob', 'like', '%'.$request->mob.'%');
         }
         
-        $chemists = $chemist->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $chemists = $chemist->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.chemist.index')->with(['chemists'=>$chemists, 'request'=>$request->all()]);
     }
 

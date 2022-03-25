@@ -156,6 +156,45 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+                            <div class="col-md-6">
+                                <select name="role" id="role" class="form-control">
+                                    @foreach($hierarchy as $key => $val)
+                                        <option value="{{$key}}" {{ ( (!empty($user->role) && ($user->role == $key)) ) ? 'selected' : '' }}>{{ $val }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="report_to" class="col-md-4 col-form-label text-md-end">{{ __('Report to') }}</label>
+                            <div class="col-md-6">
+                                <select name="report_to" id="report_to" class="form-control">
+                                    @foreach($hierarchy as $key => $val)
+                                        <option value="{{$key}}" {{ ( (!empty($user->report_to) && ($user->report_to == $key)) ) ? 'selected' : '' }}>{{ $val }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="parent_id" class="col-md-4 col-form-label text-md-end">{{ __('Report name list') }}</label>
+                            
+                            <div class="col-md-6">
+                                <select name="parent_id" id="parent_id" class="form-control select2-ajax" data-url="{{route('verified-registered-employee')}}">
+                                    @if(!empty($user) && !empty($user->parent_id))
+                                        @foreach(explode(',',$user->parent_id) as $key => $val)
+                                            <option value="{{$val}}" selected> {{fetchingSingleValue('users', 'id', $val, 'name')}} </option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                @error('parent_id')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="active" class="col-md-4 col-form-label text-md-end">{{ __('Active') }}</label>
                             <div class="col-md-6">
                                 <input id="active" type="checkbox" name="active" {{ ($user->is_active) ? "checked" : '' }}>

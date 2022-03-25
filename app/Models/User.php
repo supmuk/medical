@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -29,7 +29,11 @@ class User extends Authenticatable
         'headquarter_name',
         'aadhar_card',
         'pan_card',
-        'driving_voter_card'
+        'driving_voter_card',
+        'is_active',
+        'parent_id',
+        'role',
+        'report_to'
     ];
 
     /**
@@ -50,4 +54,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getParentKeyName()
+    {
+        return 'parent_id';
+    }
+
+    public function getLocalKeyName()
+    {
+        return 'id';
+    }
 }

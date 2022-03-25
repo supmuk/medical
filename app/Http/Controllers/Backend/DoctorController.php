@@ -31,7 +31,7 @@ class DoctorController extends Controller
             $doctor->orWhere('mob', 'like', '%'.$request->mob.'%');
         }
         
-        $doctors = $doctor->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $doctors = $doctor->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.doctor.index')->with(['doctors'=>$doctors, 'request'=>$request->all()]);
     }
 

@@ -39,53 +39,62 @@
 <script>
     // User
     var visitor = <?php echo $user; ?>;
-    google.charts.load('current', {'packages':['corechart']});
-    
-    google.charts.setOnLoadCallback(drawChart);
-    
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable(visitor);
-        var options = {
-          title: 'User Count',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById('linechart'));
-        chart.draw(data, options);
+
+    if(visitor.length > 1) {
+      google.charts.load('current', {'packages':['corechart']});
+      
+      google.charts.setOnLoadCallback(drawChart);
+      
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable(visitor);
+          var options = {
+            title: 'User Count',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById('linechart'));
+          chart.draw(data, options);
+      }
     }
 
     // Docotor
     var doctor = <?php echo $doctor; ?>;
-    google.charts.load('current', {'packages':['corechart']});
-    
-    google.charts.setOnLoadCallback(drawChartDoctor);
-    
-      function drawChartDoctor() {
-        var data = google.visualization.arrayToDataTable(doctor);
-        var options = {
-          title: 'Doctor Count',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById('linechart_doctor'));
-        chart.draw(data, options);
+
+    if(doctor.length > 1) {
+      google.charts.load('current', {'packages':['corechart']});
+      
+      google.charts.setOnLoadCallback(drawChartDoctor);
+      
+        function drawChartDoctor() {
+          var data = google.visualization.arrayToDataTable(doctor);
+          var options = {
+            title: 'Doctor Count',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById('linechart_doctor'));
+          chart.draw(data, options);
+      }
     }
 
     // Chemist
     var chemist = <?php echo $doctor; ?>;
-    google.charts.load('current', {'packages':['corechart']});
-    
-    google.charts.setOnLoadCallback(drawChartChemist);
-    
-      function drawChartChemist() {
-        var data = google.visualization.arrayToDataTable(chemist);
-        var options = {
-          title: 'Chemist Count',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById('linechart_chemist'));
-        chart.draw(data, options);
+
+    if(chemist.length > 1) {
+      google.charts.load('current', {'packages':['corechart']});
+      
+      google.charts.setOnLoadCallback(drawChartChemist);
+      
+        function drawChartChemist() {
+          var data = google.visualization.arrayToDataTable(chemist);
+          var options = {
+            title: 'Chemist Count',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+          var chart = new google.visualization.ColumnChart(document.getElementById('linechart_chemist'));
+          chart.draw(data, options);
+      }
     }
   </script>
 @endpush

@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     private $user;
     private $fareAmount;
     private $directAllowance;
-
+    private $hierarchy;
     public function __construct() {
         $this->standardFareChart = new StandardFareChartModel;
         $this->tourProgram = new TourProgram;
@@ -34,6 +34,20 @@ class EmployeeController extends Controller
         $this->user = new User;
         $this->fareAmount = new FareAmount;
         $this->directAllowance = new DirectAllowance;
+
+        $this->hierarchy = [
+            1 => 'General Manager',
+            2 => 'National Sales Manager',
+            3 => 'Sales Manager (N)',
+            4 => 'Sales Manager (E)',
+            5 => 'Sales Manager (W)',
+            6 => 'Sales Manager (S)',
+            7 => 'Zonal Sales Manager ',
+            8 => 'Regional Sales Manager ',
+            9 => 'Dy RSM',
+            10 => 'Area Sales Manager ',
+            11 => 'TM',
+        ];
     }
 
     public function getAllDirectAllowance() {
@@ -60,8 +74,8 @@ class EmployeeController extends Controller
     public function edit($id) {
         $user = $this->user->with('roles')->findOrFail($id);
         $roles = Role::get();
-        // dd($user->getAllPermissions()->toArray());
-        return view('backend.employee.edit', ['user' => $user, 'roles' => $roles]);        
+        
+        return view('backend.employee.edit', ['user' => $user, 'roles' => $roles, 'hierarchy' => $this->hierarchy]);        
     }
 
     /**
@@ -94,14 +108,31 @@ class EmployeeController extends Controller
         $updateArr['address'] = $request->address;
         $updateArr['designation'] = $request->designation;
         $updateArr['headquarter_name'] = $request->headquarter_name;
+        $updateArr['role'] = $request->role;
+        $updateArr['report_to'] = $request->report_to;
+        $updateArr['parent_id'] = $request->parent_id;
+
+        $oldUserValue = User::where('id',$request->id)->value('is_active');
+        
+        // Sending Mail
+        if($request->active == 'on' && ($oldUserValue != 1) ) {
+            \Mail::send('email.account-activate', [
+                'name' => $request->name,
+                'email' => $request->email 
+            ],
+            function ($message) use ($request){
+                $message->from($request->email);
+                $message->to(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                        ->subject('Contact Form');
+            });
+        }
 
         $user = User::where('id', $request->id)->update($updateArr);
         $user = User::find($request->id);
-        
         // Assigning Roles
         $user->syncRoles($request->roles);
 
-        // Sending Mail
+        
 
         Session::flash('message', 'success|Employee Updated Successfully !');
         return redirect()->route('employee.index');
@@ -112,7 +143,7 @@ class EmployeeController extends Controller
      */
     public function dailyCallReportIndex(Request $request) {
         $dailyCallReport = $this->dailyCallReport->query();
-        $dailyCallReport = $dailyCallReport->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $dailyCallReport = $dailyCallReport->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.employee.daily-call-report-index')->with(['dailyCallReports'=>$dailyCallReport]);
     }
 
@@ -158,7 +189,7 @@ class EmployeeController extends Controller
      */
     public function tourProgramIndex(Request $request) {
         $tourProgram = $this->tourProgram->query();
-        $tourProgram = $tourProgram->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $tourProgram = $tourProgram->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.employee.tour-program-index')->with(['tourProgram'=>$tourProgram]);
     }
 
@@ -198,7 +229,7 @@ class EmployeeController extends Controller
      * Standard fare chart manager list
      */
     public function standardFareChartIndex() {
-        $standardFareCharts = $this->standardFareChart->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $standardFareCharts = $this->standardFareChart->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.employee.standard-fare-chart-index')->with(['standardFareCharts'=>$standardFareCharts]);
     }
 
@@ -207,7 +238,7 @@ class EmployeeController extends Controller
      */
     function standardFareChart() {
         $fareAmount = $this->fareAmount->value('amount');
-        return view('backend.employee.standard-fare-chart')->with(['standardFare' => '', 'fareAmount' => '']);
+        return view('backend.employee.standard-fare-chart')->with(['standardFare' => '', 'fareAmount' => $fareAmount]);
     }
 
     /**

@@ -21,7 +21,7 @@ class HeadquarterController extends Controller
         if(!empty($request->name)) {
             $headquarter->orWhere('name', 'like', '%'.$request->name.'%');
         }
-        $headquarters = $headquarter->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $headquarters = $headquarter->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.headquarter.index')->with(['headquarters'=>$headquarters, 'request'=>$request->all()]);
     }
 

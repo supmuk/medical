@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
 
 if(!function_exists('displayAlert')) {
     function displayAlert()
@@ -46,5 +47,12 @@ if( !function_exists('fetchingSingleValue') ) {
         if(empty($data)) 
             return '';
         return $data->$fetchCol;
+    }
+}
+
+if( !function_exists('cureentUserChildren')) {
+    function cureentUserChildren() {
+        $children =  User::find(Auth::id())->descendantsAndSelf()->select('id')->get();
+        return $children->pluck('id')->all();
     }
 }

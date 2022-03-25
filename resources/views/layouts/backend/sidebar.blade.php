@@ -75,62 +75,59 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @can('list employee')
+                        
+                        @role('employee manager')
                         <li class="nav-item">
                             <a href="{{route('employee.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Employee List</p>
                             </a>
                         </li>
-                        @endcan
-                        @can('list daily call report')
+                        @endrole
+
+                        @role('daily call report manager')
                         <li class="nav-item">
                             <a href="{{route('employee.daily-call-report-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Daily Call Report List</p>
                             </a>
                         </li>
-                        @endcan
-                        @can('add daily call report')
+                        
                         <li class="nav-item">
                             <a href="{{route('employee.daily-call-report')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Daily Call Report</p>
                             </a>
                         </li>
-                        @endcan
-                        @can('list tour program')
+                        @endrole
+                        @role('tour program manager')
                         <li class="nav-item">
                             <a href="{{route('employee.tour-program-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tour Program List</p>
                             </a>
                         </li>
-                        @endcan
-                        @can('add tour program')
                         <li class="nav-item">
                             <a href="{{route('employee.tour-program')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tour Program</p>
                             </a>
                         </li>
-                        @endcan
-                        @can('list standard fare chart')
+                        @endrole
+                        @role('standard fare chart manager')
                         <li class="nav-item">
                             <a href="{{route('employee.standard-fare-chart-index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Standard fare chart List</p>
                             </a>
                         </li>
-                        @endcan
-                        @can('add standard fare chart')
                         <li class="nav-item">
                             <a href="{{route('employee.standard-fare-chart')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Standard fare chart</p>
                             </a>
                         </li>
-                        @endcan
+                        @endrole
                     </ul>
                 </li>
                 

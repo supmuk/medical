@@ -20,7 +20,7 @@ class SettingManagerController extends Controller
     }
 
     public function index() {
-        $fareAmountData = $this->fareAmount->paginate(PAGINATION_SIZE);
+        $fareAmountData = $this->fareAmount->whereIn('created_by', cureentUserChildren())->paginate(PAGINATION_SIZE);
         return view('backend.settingmanager.index')->with(['fare_amount' => $fareAmountData]);
     }
 
@@ -42,7 +42,7 @@ class SettingManagerController extends Controller
     }
 
     public function directAllowanceindex() {
-        $directAllowance = $this->directAllowance->paginate(PAGINATION_SIZE);
+        $directAllowance = $this->directAllowance->whereIn('created_by', cureentUserChildren())->paginate(PAGINATION_SIZE);
         return view('backend.settingmanager.index-da')->with(['directAllowance' => $directAllowance]);
     }
 

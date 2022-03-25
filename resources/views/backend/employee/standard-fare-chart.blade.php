@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group">
                                 <label>To</label>
-                                <input type="email" name="to" class="form-control" placeholder="To" value="{{printOldOrDbValue('to', $standardFare)}}">
+                                <input type="text" name="to" class="form-control" placeholder="To" value="{{printOldOrDbValue('to', $standardFare)}}">
                                 @error('to')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -69,6 +69,7 @@
             // updateFare($("#one_way_distance").val());
         });
         var fareAmount = "{{ $fareAmount ?? 0 }}";
+        // console.log(fareAmount);
         function updateFare(val) {
             
             if( val != null && val != 'undefined' && val != "" ) {

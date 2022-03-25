@@ -115,19 +115,19 @@
                             <div class="form-group">
                                 <label for="">Direct Allowance</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios1" value="{{$directAllowance->hq}}">
+                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios1" value="{{$directAllowance->hq ?? 0}}">
                                     <label class="form-check-label" for="exampleRadios1">
                                       Headquarter
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios2" value="{{$directAllowance->ehq}}">
+                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios2" value="{{$directAllowance->ehq ?? 0}}">
                                     <label class="form-check-label" for="exampleRadios2">
                                        Ex Headquarter
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios3" value="{{$directAllowance->outstation}}">
+                                    <input class="form-check-input" type="radio" name="direct_allowance" id="exampleRadios3" value="{{$directAllowance->outstation ?? 0}}">
                                     <label class="form-check-label" for="exampleRadios3">
                                       Outstation
                                     </label>

@@ -21,7 +21,7 @@ class PageController extends Controller
         if (!empty($request->name)) {
             $page->orWhere('title', 'like', '%'.$request->name.'%');
         }
-        $pages = $page->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
+        $pages = $page->whereIn('created_by', cureentUserChildren())->orderBy('id', 'desc')->paginate(PAGINATION_SIZE);
         return view('backend.page.index')->with(['pages'=>$pages, 'request'=>$request->all()]);
     }
 
