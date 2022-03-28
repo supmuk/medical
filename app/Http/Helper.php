@@ -51,8 +51,45 @@ if( !function_exists('fetchingSingleValue') ) {
 }
 
 if( !function_exists('cureentUserChildren')) {
-    function cureentUserChildren() {
-        $children =  User::find(Auth::id())->descendantsAndSelf()->select('id')->get();
-        return $children->pluck('id')->all();
+    function cureentUserChildren($id = null, $data = null) {
+        
+        if($id) {
+            $parent = User::where('parent_id',$id)->get();
+        }
+        else {
+            $data = [];
+            $data[] = Auth::id();
+            $parent = User::where('parent_id',Auth::id())->get();
+        }
+
+        foreach($parent as $key => $val) {
+            $data[] = $val->id;
+            
+            $parents = User::where('parent_id',$val->id)->count();
+            if($parents > 0) {
+                return cureentUserChildren($val->id, $data);
+            } 
+        }
+        // dd($data);
+        return $data;
+    }
+}
+
+function getChildren($id = null) {
+    if($id) {
+        $parent = User::where('parent_id',$id)->get();
+    }
+    else {
+        $parent = User::where('parent_id',Auth::id())->get();
+    }
+
+    $data = [];
+    foreach($parent as $key => $val) {
+        $data[] = $val->id;
+        $parents = User::where('parent_id',$val->id)->count();
+
+        if($parents > 0) {
+            return getChildren();
+        }
     }
 }

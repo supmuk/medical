@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73b3d5f4fd0204b5ef5479fd4fd62c4b",
+    "content-hash": "c8d025f4624c6565a4c620f6a3c40047",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -791,6 +791,68 @@
             "time": "2020-12-29T14:50:06+00:00"
         },
         {
+            "name": "franzose/closure-table",
+            "version": "v6.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/franzose/ClosureTable.git",
+                "reference": "35356b462ee4d31dcce557c839ee4daeaeb84d2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/franzose/ClosureTable/zipball/35356b462ee4d31dcce557c839ee4daeaeb84d2a",
+                "reference": "35356b462ee4d31dcce557c839ee4daeaeb84d2a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.4|^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^6.0|^7.0|^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Franzose\\ClosureTable\\ClosureTableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Franzose\\ClosureTable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Iwanow",
+                    "email": "iwanow.jan@gmail.com",
+                    "homepage": "http://janiwanow.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Adjacency List’ed Closure Table database design pattern implementation for Laravel",
+            "keywords": [
+                "adjacency list",
+                "categories",
+                "closure table",
+                "database",
+                "hierarchy",
+                "laravel",
+                "pages"
+            ],
+            "support": {
+                "issues": "https://github.com/franzose/ClosureTable/issues",
+                "source": "https://github.com/franzose/ClosureTable/tree/v6.1.1"
+            },
+            "time": "2020-10-06T01:22:48+00:00"
+        },
+        {
             "name": "fruitcake/laravel-cors",
             "version": "v2.0.5",
             "source": {
@@ -1255,6 +1317,69 @@
                 }
             ],
             "time": "2021-10-06T17:43:30+00:00"
+        },
+        {
+            "name": "kalnoy/nestedset",
+            "version": "v6.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lazychaser/laravel-nestedset.git",
+                "reference": "bcfbccea5e3ddf31cb22e1bc3c6124da584505fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/bcfbccea5e3ddf31cb22e1bc3c6124da584505fc",
+                "reference": "bcfbccea5e3ddf31cb22e1bc3c6124da584505fc",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^7.0|^8.0|^9.0",
+                "illuminate/events": "^7.0|^8.0|^9.0",
+                "illuminate/support": "^7.0|^8.0|^9.0",
+                "php": "^7.2.5|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.*|8.*|9.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "v5.0.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Kalnoy\\Nestedset\\NestedSetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kalnoy\\Nestedset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kalnoy",
+                    "email": "lazychaser@gmail.com"
+                }
+            ],
+            "description": "Nested Set Model for Laravel 5.7 and up",
+            "keywords": [
+                "database",
+                "hierarchy",
+                "laravel",
+                "nested sets",
+                "nsm"
+            ],
+            "support": {
+                "issues": "https://github.com/lazychaser/laravel-nestedset/issues",
+                "source": "https://github.com/lazychaser/laravel-nestedset/tree/v6.0.1"
+            },
+            "time": "2022-02-11T06:17:57+00:00"
         },
         {
             "name": "laravel/framework",

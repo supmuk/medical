@@ -97,6 +97,8 @@ class RegisterController extends Controller
             'pan_card' => $request->pan_card->hashName(),
             'driving_voter_card'=>$request->driving_voter_card->hashName(),
         ]);
+
+        // return $user;
     }
 
     /**

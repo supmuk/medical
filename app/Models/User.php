@@ -8,11 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+// use Kalnoy\Nestedset\NodeTrait;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
+    // use HasApiTokens, HasFactory, Notifiable, HasRoles, \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    // NodeTrait
 
     /**
      * The attributes that are mass assignable.

@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('driving_voter_card')->nullable();
             $table->tinyInteger('is_admin')->default(0);
             $table->tinyInteger('is_active')->default(0);
+            $table->nestedSet();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ use Session;
 use App\Models\{User, FareAmount, DirectAllowance};
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Node;
 
 class EmployeeController extends Controller
 {
@@ -56,7 +57,7 @@ class EmployeeController extends Controller
     /**
      * Return All Employee
      */
-    public function index(Request $request) {
+    public function index(Request $request) {   
         $user = $this->user->query();
         if(!empty($request->name)) {
             $user->orWhere('name', 'like', '%'.$request->name.'%');
